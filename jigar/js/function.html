@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <title>My First JavaScript code!!!</title>
+    <script src="jquery-3.5.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#submit").mouseover(function () {
+                // $("#submit").css("background-color", "red");
+                $(this).css("background-color", "red");
+                // $("#num").val(6);
+
+            });
+            $("#submit").mouseout(function () {
+                $("#submit").css("background-color", "");
+            });
+            $("#submit").click(function(){
+                var number = $("#num").val();
+                var sqnumber = number * number;
+
+                $("#result").html(sqnumber);
+
+            });
+            
+
+
+        });
+        // 	function calSquare(num)
+        //     {
+        //         return (num * num);
+        //     }
+        //    var sqnumber = calSquare(5);
+        //     document.write(sqnumber);
+
+                // function calSquare()
+                // {
+                //     var i = document.getElementById("num").value;
+
+                //     document.getElementById("result").innerHTML=i*i;
+                // }
+                // function mover()
+                // {
+                //     document.getElementById("submit").style.backgroundColor = "red";
+                // }
+                // function mout()
+                // {
+                //     document.getElementById("submit").style.backgroundColor = "";
+                // }
+
+        // var count = 0;
+        // function countVowels(name) {
+        //     for (var i = 0; i < name.length; i++) {
+        //         if (name[i] == "a" || name[i] == "e" || name[i] == "i" || name[i] == "o" || name[i] == "u")
+        //             count = count + 1;
+        //     }
+        //     document.write("Hello " + name + "!!! Your name has " + count + " vowels.");
+        // }
+        // var myName = prompt("Please enter your name");
+        // countVowels(myName);
+    </script>
+</head>
+
+<body>
+    <!-- <form action="">
+
+        <input type="number" id="num">
+        <button type="button" onmouseover="mover()" onmouseout="mout()" id="submit" onclick="calSquare()"> Submit </button>
+        <div id="result">
+
+        </div>
+    </form> -->
+    <form action="">
+
+        <input type="number" id="num">
+        <button type="button" onmouseout="mout()" id="submit" onclick="calSquare()"> Submit </button>
+        <div id="result">
+
+        </div>
+    </form>
+</body>
+
+</html>
