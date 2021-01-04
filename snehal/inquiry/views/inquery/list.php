@@ -1,39 +1,37 @@
 <?php include_once("../../header.php"); ?>
 
-  <h2>Property List</h2>
-  <a href="/views/property/insert.php" class="btn btn-primary">Insert property</a>
-  <table class="table table-striped">
+<h2>Inquery List</h2>
+<a href="/controller/inquery/insert.php" class="btn btn-primary">Insert Inquery</a>
+<table class="table table-striped">
     <thead>
-      <tr>
-        <th>Id</th>
-        <th>Type</th>
-        <th>Sq_foot</th>
-        <th>Dirction</th>
-        <th>Description</th>
-        <th>Number</th>
-        <th>Is_sold</th>
-        <th>Aggrement_date</th>
-        <th></th>
-      </tr>
+        <tr>
+            <th>id</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Property</th>
+            <th></th>
+        </tr>
     </thead>
     <tbody>
-     <?php foreach($rows as $filedname => $row):?>
+        <?php foreach($records as $cid => $row):?>
         <tr>
-            <td><?php echo $row['id'] ?></td>
-            <td><?php echo $row['type'] ?></td>
-            <td><?php echo $row['sq_foot'] ?></td>
-            <td><?php echo $row['dirction'] ?></td>
-            <td><?php echo $row['description'] ?></td>
-            <td><?php echo $row['number'] ?></td>
-            <td><?php echo $row['is_sold'] ?></td>
-            <td><?php echo $row['aggremnt_date'] ?></td>
-            <td> <a href="<?php echo '/controller/property/delete.php?id='.$row['id']?>" class="btn btn-primary">Delete</a>
-             <a href="<?php echo '/controller/property/edit.php?id='.$row['id']?>" class="btn btn-primary">Edit</a></td>
+            <td><?php echo $cid ?></td>
+            <td><?php echo $row['firstname'] ?></td>
+            <td><?php echo $row['lastname'] ?></td>
+            <td>
+                <?php foreach($row['property'] as $p_id => $p_detail) : ?>
+                <?php echo $p_detail['type']."-" .$p_detail['sqfoot'] ?>
+                <br />
+                <?php endforeach; ?>
+            </td>
+            <td> <a href="<?php echo '/controller/inquery/delete.php?customer_id='.$cid ?>" class="btn btn-primary">Delete</a>
+                <a href="<?php echo '/controller/inquery/edit.php?customer_id='.$cid ?>" class="btn btn-primary">Edit</a>
+            </td>
         </tr>
-     <?php endforeach;?>
+        <?php endforeach;?>
 
     </tbody>
-  </table>
+</table>
 
 <ul class="pagination">
         <?php if($page_no > 1): ?>
@@ -71,8 +69,7 @@
         <?php endif ?>
     </ul>
 
-<div> 
-<?php include_once("../../footer.php"); ?>
 
+<?php include_once("../../footer.php"); ?>
 <!-- </body>
 </html> -->
