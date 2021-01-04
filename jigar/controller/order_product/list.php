@@ -30,3 +30,5 @@ order by orders." .$sort_by." ".$sort_order;
     include_once("../../views/order_product/list.php");
     // print_r($data);
     // exit;
+"<a class = 'active' href='/jigar/controller/property/list.php?page="
+                . $i . '&filter_input=' . $filter_input . "'>"  . $i .   " </a>";

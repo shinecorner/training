@@ -28,7 +28,7 @@
   <div class="container">
     <div class="row">
 
-      <a class="btn btn-primary" href="/controller/order_product/insert.php"> Add Record </a>
+      <a class="btn btn-primary" href="/jigar/controller/order_product/insert.php"> Add Record </a>
     </div>
     <div class="row">
       <div class="col-12">

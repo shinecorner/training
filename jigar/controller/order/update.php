@@ -27,7 +27,7 @@ where id = ".$_POST['id'];
 
     if($query)
     {
-        header("Location: /controller/order/list.php");
+        header("Location: /jigar/controller/order/list.php");
         // header("Location : controller/property/list.php");
         exit;
 

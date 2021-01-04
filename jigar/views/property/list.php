@@ -14,29 +14,14 @@
   <title>Document</title>
 </head>
 
-<script>
-  // function filter_data() {
-    // varfilter_input = $('#filter_input').val();
-    // alert(filter_input);
-//     $.ajax({
-//       'type': 'POST',
-//       'url': 'list.php',
-//       'data': 'filter_input=' + filter_input,
-//       success: function(data) {
-//         $('#userData').html(data);
-//       }
-//     });
-//   }
-// 
 </script>
-
 <script type="text/javascript">
   $(document).ready(function() {
     $(".cdelete").click(function() {
       let id = $(this).data("id");
       if (confirm("Do you want to delete")) {
 
-        window.location.href = "/controller/product/delete.php?id=" + id;
+        window.location.href = "/jigar/controller/product/delete.php?id=" + id;
       } else {
         console.log("not deleted");
       }
@@ -87,18 +72,43 @@
   <div class="container">
 
     <div class="row">
-      <form align="center" method="get" action="/controller/property/list.php">
-        <input type="text" name="filter_input" id="filter_input">
+      <form align="center" method="get" action="/jigar/controller/property/list.php">
+        <input type="text" name="filter_input" value="<?php echo $filter_input; ?>" id="filter_input">
         <input type="submit" name="search" value="search">
+        <button class="btn btn-danger" href="<?php echo '../../controller/property/list.php' ?>" value="Reset"> <a href="<?php echo '../../controller/property/list.php' ?>"> Reset </a> </button>
+
       </form>
-      
+
+    </div>
+    <div class="row">
+
+      <a class="btn btn-primary" href="../../views/property/insert.php"> Add Record </a>
     </div>
     <div class="row">
       <div class="col-12">
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th scope="col"> <a href="<?php echo '../../controller/property/list.php?sort_by=id&sort_property=' . ($sort_property == 'ASC' ? 'DESC' : 'ASC') ?>"> Id </a></th>
+              <th scope="col">
+                 
+                <?php
+                
+
+                if (isset($filter_input)) {
+                echo  "<a href='/jigar/controller/property/list.php?filter_input=" . $filter_input . "&sort_by=id&sort_property=" . ($sort_property == 'ASC' ? 'DESC' : 'ASC') . "'>
+      Id
+    </a>";
+                } else {
+                 echo  "<a href='/jigar/controller/property/list.php?sort_by=id&sort_property=" . ($sort_property == 'ASC' ? 'DESC' : 'ASC') . "'>
+      Id
+    </a>";
+                }
+
+                ?>
+
+
+
+              </th>
               <th scope="col"> <a href="<?php echo '../../controller/property/list.php?sort_by=type&sort_property=' . ($sort_property == 'ASC' ? 'DESC' : 'ASC') ?>">Type </a></th>
               <th scope="col">Square Feet</th>
               <th scope="col">Direction</th>
@@ -135,14 +145,17 @@
         <div class="pagination">
           <?php
 
-          include_once("../../controller/property/pagination.php");
+          // include_once("../../controller/property/pagination.php");
 
+          $pagLink =  "";
+          // echo $pagLink.=$i = $page ? 'selected' : '';
           for ($i = 1; $i <= $total_pages; $i++) {
-            if ($i == $page) {
-              $pagLink .= "<a class = 'active' href='/controller/property/list.php?page="
-                . $i . "'>" . $i . " </a>";
+
+            if (isset($filter_input)) {
+              $pagLink .= "<a class = 'active' href='/jigar/controller/property/list.php?page="
+                . $i . '&filter_input=' . $filter_input . "'>"  . $i .   " </a>";
             } else {
-              $pagLink .= "<a href='/controller/property/list.php?page=" . $i . "'>   
+              $pagLink .= "<a class = 'active' href='/jigar/controller/property/list.php?page=" . $i . "'>   
                                               " . $i . " </a>";
             }
           };

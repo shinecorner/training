@@ -10,10 +10,10 @@
   <script type="text/javascript">
     $(document).ready(function() {
       $(".cdelete").click(function() {
-        let id = $(this).data("id");
+        let pr_id = $(this).data("id");
         if (confirm("Do you want to delete")) {
 
-          window.location.href = "/controller/product/delete.php?id=" + id;
+          window.location.href = "/jigar/controller/product/delete.php?id=" + pr_id;
         } else {
           console.log("not deleted");
         }
@@ -96,7 +96,7 @@
                 <td><?php echo $row["category_name"]; ?></td>
                 <td><?php echo $row["price"]; ?></td>
                 <td><a class="btn btn-primary" href="<?php echo '../../controller/product/edit.php?id=' . $row['id'] ?>">Edit</a> </td>
-                <td><button type="button" class="btn btn-danger cdelete" data-id="<?php echo $row['id']; ?>">delete</button> </td>
+                <td><button type="button" href="<?php echo '../../controller/product/delete.php?id=' . $row['id'] ?>" class="btn btn-danger cdelete" data-id="<?php echo $row['id']; ?>">delete</button> </td>
                 </td>
               </tr>
             <?php endforeach; ?>
@@ -110,10 +110,10 @@
 
           for ($i = 1; $i <= $total_pages; $i++) {
             if ($i == $page) {
-              $pagLink .= "<a class = 'active' href='/controller/product/list.php?page="
+              $pagLink .= "<a class = 'active' href='/jigar/controller/product/list.php?page="
                 . $i . "'>" . $i . " </a>";
             } else {
-              $pagLink .= "<a href='/controller/product/list.php?page=" . $i . "'>   
+              $pagLink .= "<a href='/jigar/controller/product/list.php?page=" . $i . "'>   
                                               " . $i . " </a>";
             }
           };

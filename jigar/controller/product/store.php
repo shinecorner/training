@@ -14,7 +14,7 @@ if (isset($_POST['btn_submit'])) {
     $p_query  = mysqli_query($con, $insert_product) or die(mysqli_error($con));
     
 if ($p_query) {
-    header("Location: /controller/product/list.php");
+    header("Location: /jigar/controller/product/list.php");
 }
 }
 ?>

@@ -17,7 +17,7 @@ $query = mysqli_query($con, $select) or die(mysqli_error($con));
 // exit;
 
 if ($query) {
-    header("Location: /controller/product/list.php");
+    header("Location: /jigar/controller/product/list.php");
 
     // header("Location : controller/property/list.php");
     exit;

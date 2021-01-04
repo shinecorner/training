@@ -25,7 +25,7 @@ $delete_result = mysqli_query($con, $delete_query) or die(mysqli_error($con));
 }
 if($result)
 {
-header("Location: /controller/inquiry/list.php");
+header("Location: /jigar/controller/inquiry/list.php");
 }
     //     $property = $data[0];
     // }

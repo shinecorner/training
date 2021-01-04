@@ -13,7 +13,7 @@ if ($delete_result) {
             $result = mysqli_query($con,$insert_query) or die(mysqli_error($con));
             
         }
-        header("Location: /controller/order_product/list.php");
+        header("Location: /jigar/controller/order_product/list.php");
     }
    
 

@@ -13,8 +13,8 @@
 
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
   <ul class="navbar-nav">
-  <li class="nav-item active">
-      <a class="nav-link" href="#">Inquiry</a>
+  <li class="nav-item">
+      <a class="nav-link" href="/controller/inquery/list.php">Inquiry</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/controller/customer/list.php">Customer</a>
@@ -24,6 +24,15 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/controller/property/list.php">Property</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/controller/customer_phone/list.php">Customer Phone</a>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" href="/controller/ajax/list.php">Ajax</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/controller/ajaxcategory/list.php">Ajax Category</a>
     </li>
   </ul>
 </nav>     
