@@ -9,10 +9,10 @@
   <script type="text/javascript">
     $(document).ready(function() {
       $(".cdelete").click(function() {
-        let id = $(this).data("id");
+        let property_id = $(this).data("property_id");
         if (confirm("Do you want to delete")) {
 
-          window.location.href = "/controller/inquiry/list.php?id=" + id;
+          window.location.href = "/jigar/controller/inquiry/list.php?property_id=" + property_id;
         } else {
           console.log("not deleted");
         }
@@ -28,7 +28,7 @@
   <div class="container">
     <div class="row">
 
-      <a class="btn btn-primary" href="/controller/inquiry/insert.php"> Add Record </a>
+      <a class="btn btn-primary" href="/jigar/controller/inquiry/insert.php"> Add Record </a>
     </div>
     <div class="row">
       <div class="col-12">
@@ -51,7 +51,7 @@
                 <td><?php echo implode(",", $row['firstname']); ?></td>
 
                 <td><a class="btn btn-primary" href="<?php echo '../../controller/inquiry/edit.php?property_id=' . $row['property_id'] ?>">Edit</a> </td>
-                <td><button type="button" class="btn btn-danger cdelete" data-id="<?php echo $row['property_id']; ?>">delete</button> </td>
+                <td><button type="button" href="<?php echo '../../controller/inquiry/delete.php?property_id=' . $row['property_id'] ?>" class="btn btn-danger cdelete" data-id="<?php echo $row['property_id']; ?>">delete</button> </td>
               </tr>
             <?php endforeach; ?>
 

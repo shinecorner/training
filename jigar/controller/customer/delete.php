@@ -13,7 +13,7 @@ if(isset($_GET['id']))
 
     if($query)
     {
-        header("Location: /controller/customer/list.php");
+        header("Location: /jigar/controller/customer/list.php");
     }
 
 

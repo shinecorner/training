@@ -5,15 +5,15 @@
 $con  = mysqli_connect('localhost', 'root', '', 'buildcon');
 $count = 0;
 
-if(isset($_GET['property_id']))
+if(isset($_GET['id']))
 {
-    $delete = "delete from customer_property where property_id = ".$_GET['property_id'];
+    $delete = "delete from customer_property where id = ".$_GET['id'];
 
     $query = mysqli_query($con,$delete);
 
     if($query)
     {
-        header("Location: /controller/inquiry/list.php");
+        header("Location: /jigar/controller/inquiry/list.php");
     }
 
 

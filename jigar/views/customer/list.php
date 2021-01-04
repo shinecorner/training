@@ -21,7 +21,7 @@ $count = 0;
         let id = $(this).data("id");
         if (confirm("Do you want to delete")) {
 
-          window.location.href = "/controller/customer/delete.php?id=" + id;
+          window.location.href = "/jigar/controller/customer/delete.php?id=" + id;
         } else {
           console.log("not deleted");
         }
@@ -100,7 +100,7 @@ $count = 0;
                 <td><?php echo $row["lastname"]; ?></td>
 
                 <td><a class="btn btn-primary" href="<?php echo '../../controller/customer/edit.php?id=' . $row['id'] ?>">Edit</a> </td>
-                <td><button type="button" class="btn btn-danger cdelete" data-id="<?php echo $row['id']; ?>">delete</button> </td>
+                <td><button type="button" href="<?php echo '../../controller/customer/delete.php?id=' . $row['id'] ?>" class="btn btn-danger cdelete" data-id="<?php echo $row['id']; ?>">delete</button> </td>
                 </td>
               </tr>
             <?php endforeach; ?>
@@ -113,10 +113,10 @@ $count = 0;
 
           for ($i = 1; $i <= $total_pages; $i++) {
             if ($i == $page) {
-              $pagLink .= "<a class = 'active' href='/controller/customer/list.php?page="
+              $pagLink .= "<a class = 'active' href='/jigar/controller/customer/list.php?page="
                 . $i . "'>" . $i . " </a>";
             } else {
-              $pagLink .= "<a href='/controller/customer/list.php?page=" . $i . "'>   
+              $pagLink .= "<a href='/jigar/controller/customer/list.php?page=" . $i . "'>   
                                               " . $i . " </a>";
             }
           };
