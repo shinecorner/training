@@ -1,6 +1,21 @@
 <?php
-$con  = mysqli_connect('localhost', 'root', '', 'buildcon');
-$count = 0;
+include_once('../session_check.php');
+include_once("../../connection.php");
+
+
+// session_start();
+
+// if (isset($_SESSION['username']) && !empty($_SESSION['username'])) 
+// {
+//     header("Location: /controller/order_product/list.php");
+// }
+// else
+// {
+//     header("Location: /views/login/login.php");
+// }
+
+
+
 
 $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'id';
 
@@ -30,5 +45,5 @@ order by orders." .$sort_by." ".$sort_order;
     include_once("../../views/order_product/list.php");
     // print_r($data);
     // exit;
-"<a class = 'active' href='/jigar/controller/property/list.php?page="
+"<a class = 'active' href='/controller/property/list.php?page="
                 . $i . '&filter_input=' . $filter_input . "'>"  . $i .   " </a>";

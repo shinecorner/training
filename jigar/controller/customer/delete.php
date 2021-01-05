@@ -2,8 +2,9 @@
 
 // print_r($_POST);
 // exit;
-$con  = mysqli_connect('localhost', 'root', '', 'buildcon');
-$count = 0;
+include_once("../../connection.php");
+// $con  = mysqli_connect('localhost', 'root', '', 'buildcon');
+// $count = 0;
 
 if(isset($_GET['id']))
 {
@@ -13,7 +14,7 @@ if(isset($_GET['id']))
 
     if($query)
     {
-        header("Location: /jigar/controller/customer/list.php");
+        header("Location: /controller/customer/list.php");
     }
 
 

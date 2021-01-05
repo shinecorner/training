@@ -2,8 +2,7 @@
 
 // print_r($_GET);
 // exit;
-$con  = mysqli_connect('localhost', 'root', '', 'buildcon');
-$count = 0;
+include_once("../../connection.php");
 
 $select = "select * from orders where id = ".$_GET['id'];
 

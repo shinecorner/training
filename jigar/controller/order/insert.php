@@ -2,8 +2,7 @@
 
 // print_r($_POST);
 // exit;
-$con  = mysqli_connect('localhost', 'root', '', 'buildcon');
-$count = 0;
+include_once("../../connection.php");
 
 if(isset($_POST['btn_submit']))
 {
@@ -16,7 +15,7 @@ $insert_order = "insert into orders values('','$_POST[transaction_num]','$_POST[
 $o_query = mysqli_query($con,$insert_order) or die(mysqli_error($con));
 if($o_query)
 {
-    header("Location: /jigar/controller/order/list.php");
+    header("Location: /controller/order/list.php");
 
 }
 

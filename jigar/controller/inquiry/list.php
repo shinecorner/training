@@ -1,6 +1,19 @@
 <?php
-$con  = mysqli_connect('localhost', 'root', '', 'buildcon');
-$count = 0;
+include_once('../session_check.php');
+include_once("../../connection.php");
+
+// session_start();
+
+// if (isset($_SESSION['username']) && !empty($_SESSION['username'])) 
+// {
+//     header("Location: /controller/inquiry/list.php");
+// }
+// else
+// {
+//     header("Location: /views/login/login.php");
+// }
+
+
 
 
 $select = "select property.id as prop_id,property.type,property.sq_feet,customer.firstname,customer.id as cust_id

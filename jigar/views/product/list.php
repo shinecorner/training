@@ -13,7 +13,7 @@
         let pr_id = $(this).data("id");
         if (confirm("Do you want to delete")) {
 
-          window.location.href = "/jigar/controller/product/delete.php?id=" + pr_id;
+          window.location.href = "/controller/product/delete.php?id=" + pr_id;
         } else {
           console.log("not deleted");
         }
@@ -110,10 +110,10 @@
 
           for ($i = 1; $i <= $total_pages; $i++) {
             if ($i == $page) {
-              $pagLink .= "<a class = 'active' href='/jigar/controller/product/list.php?page="
+              $pagLink .= "<a class = 'active' href='/controller/product/list.php?page="
                 . $i . "'>" . $i . " </a>";
             } else {
-              $pagLink .= "<a href='/jigar/controller/product/list.php?page=" . $i . "'>   
+              $pagLink .= "<a href='/controller/product/list.php?page=" . $i . "'>   
                                               " . $i . " </a>";
             }
           };

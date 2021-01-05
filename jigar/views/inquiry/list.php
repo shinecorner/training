@@ -12,7 +12,7 @@
         let property_id = $(this).data("property_id");
         if (confirm("Do you want to delete")) {
 
-          window.location.href = "/jigar/controller/inquiry/list.php?property_id=" + property_id;
+          window.location.href = "/controller/inquiry/list.php?property_id=" + property_id;
         } else {
           console.log("not deleted");
         }
@@ -28,7 +28,7 @@
   <div class="container">
     <div class="row">
 
-      <a class="btn btn-primary" href="/jigar/controller/inquiry/insert.php"> Add Record </a>
+      <a class="btn btn-primary" href="/controller/inquiry/insert.php"> Add Record </a>
     </div>
     <div class="row">
       <div class="col-12">

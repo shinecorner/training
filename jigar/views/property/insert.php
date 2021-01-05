@@ -16,7 +16,7 @@
 
     <div class="container">
         <h2>Insert form Of Property</h2>
-        <form action="<?php echo '/jigar/controller/property/insert.php' ?>" method="post">
+        <form action="<?php echo '/controller/property/insert.php' ?>" method="post">
             <input type="hidden" name="id" />
 
             <div class="form-group">

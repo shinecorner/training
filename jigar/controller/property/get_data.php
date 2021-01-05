@@ -1,7 +1,6 @@
 <?php
 
-$con  = mysqli_connect('localhost', 'root', '', 'buildcon');
-$count = 0;
+include_once("../../connection.php");
 
 $filter_input = $_POST['filter_input'];
 $where = "where discription like '%".$filter_input."%'";

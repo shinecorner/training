@@ -38,7 +38,7 @@
 
   <div class="container">
     <h2>Insert form</h2>
-    <form action="<?php echo '/jigar/controller/customer/ajax_info.php' ?>" method="post" id="myForm">
+    <form action="<?php echo '/controller/customer/ajax_info.php' ?>" method="post" id="myForm">
 
       <div class="form-group">
         <label for="firstname">First Name:</label>

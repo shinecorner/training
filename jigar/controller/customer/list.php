@@ -1,7 +1,9 @@
-<?php
 
-$con  = mysqli_connect('localhost', 'root', '', 'buildcon');
-$count = 0;
+
+<?php
+include_once('../session_check.php');
+include_once("../../connection.php");
+
 
 $per_page_record = 2;  // Number of entries to show in a page.   
 // Look for a GET variable page if not found default is 1.        

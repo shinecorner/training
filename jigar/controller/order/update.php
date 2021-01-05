@@ -2,12 +2,7 @@
 
 // print_r($_POST);
 // exit;
-$con  = mysqli_connect('localhost', 'root', '', 'buildcon');
-$count = 0;
-
-
-
-
+include_once("../../connection.php");
 
 
 
@@ -27,7 +22,7 @@ where id = ".$_POST['id'];
 
     if($query)
     {
-        header("Location: /jigar/controller/order/list.php");
+        header("Location: /controller/order/list.php");
         // header("Location : controller/property/list.php");
         exit;
 

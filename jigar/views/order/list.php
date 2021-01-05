@@ -13,7 +13,7 @@
         let id = $(this).data("id");
         if (confirm("Do you want to delete")) {
 
-          window.location.href = "/jigar/controller/order/delete.php?id=" + id;
+          window.location.href = "/controller/order/delete.php?id=" + id;
         } else {
           console.log("not deleted");
         }
@@ -111,10 +111,10 @@
 
           for ($i = 1; $i <= $total_pages; $i++) {
             if ($i == $page) {
-              $pagLink .= "<a class = 'active' href='/jigar/controller/order/list.php?page="
+              $pagLink .= "<a class = 'active' href='/controller/order/list.php?page="
                 . $i . "'>" . $i . " </a>";
             } else {
-              $pagLink .= "<a href='/jigar/controller/order/list.php?page=" . $i . "'>   
+              $pagLink .= "<a href='/controller/order/list.php?page=" . $i . "'>   
                                               " . $i . " </a>";
             }
           };

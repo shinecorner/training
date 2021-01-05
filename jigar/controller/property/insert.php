@@ -2,8 +2,7 @@
 
 // print_r($_POST);
 // exit;
-$con  = mysqli_connect('localhost', 'root', '', 'buildcon');
-$count = 0;
+include_once("../../connection.php");
 
 if(isset($_POST['btn_submit']))
 {
@@ -16,7 +15,7 @@ $insert_property = "insert into property values('','$_POST[type]','$_POST[sq_fee
 $p_query = mysqli_query($con,$insert_property) or die(mysqli_error($con));
 if($p_query)
 {
-    header("Location: /jigar/controller/property/list.php");
+    header("Location: /controller/property/list.php");
 
 }
 

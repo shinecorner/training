@@ -16,7 +16,7 @@ $o_query = mysqli_query($con,$insert_order) or die(mysqli_error($con));
 
 if($o_query)
 {
-    header("Location: /jigar/controller/customer/list.php");
+    header("Location: /controller/customer/list.php");
     print_r($_POST['firstname']);
 
 }

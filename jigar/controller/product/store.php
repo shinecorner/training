@@ -1,7 +1,6 @@
 <?php
 
-$con  = mysqli_connect('localhost', 'root', '', 'buildcon');
-$count = 0;
+include_once("../../connection.php");
 
 
 if (isset($_POST['btn_submit'])) {
@@ -14,7 +13,7 @@ if (isset($_POST['btn_submit'])) {
     $p_query  = mysqli_query($con, $insert_product) or die(mysqli_error($con));
     
 if ($p_query) {
-    header("Location: /jigar/controller/product/list.php");
+    header("Location: /controller/product/list.php");
 }
 }
 ?>

@@ -2,8 +2,7 @@
 
 // print_r($_POST);
 // exit;
-$con  = mysqli_connect('localhost', 'root', '', 'buildcon');
-$count = 0;
+include_once("../../connection.php");
 
 // print_r($_POST);
 // exit;
@@ -25,7 +24,7 @@ $delete_result = mysqli_query($con, $delete_query) or die(mysqli_error($con));
 }
 if($result)
 {
-header("Location: /jigar/controller/inquiry/list.php");
+header("Location: /controller/inquiry/list.php");
 }
     //     $property = $data[0];
     // }

@@ -1,7 +1,9 @@
 <?php
+// session_start();
+include_once('../session_check.php');
+include_once("../../connection.php");
 
-$con  = mysqli_connect('localhost', 'root', '', 'buildcon');
-$count = 0;
+
 
 $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'id';
 

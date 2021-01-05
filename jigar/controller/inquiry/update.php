@@ -1,7 +1,6 @@
 <?php
 
-$con  = mysqli_connect('localhost', 'root', '', 'buildcon');
-$count = 0;
+include_once("../../connection.php");
 
 $delete_query = "delete from customer_property where property_id = " . $_POST['property'];
 $delete_result = mysqli_query($con, $delete_query) or die(mysqli_error($con));
@@ -14,7 +13,7 @@ if ($delete_result) {
             $result = mysqli_query($con,$insert_query) or die(mysqli_error($con));
             
         }
-        header("Location: /jigar/controller/inquiry/list.php");
+        header("Location: /controller/inquiry/list.php");
     }
    
 
