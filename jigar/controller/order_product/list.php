@@ -16,17 +16,11 @@ include_once("../../connection.php");
 
 
 
-
-$sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'id';
-
-$sort_order = isset($_GET['sort_order']) ? $_GET['sort_order'] : 'ASC';
-
 $select = "select orders.id as ord_id,orders.transaction_num,orders.total,product.name,product.id as prod_id,category.id as cat_id,category.name as cat_name
 from (((orders
 left join order_product on orders.id = order_product.order_id)
 left join product on product.id = order_product.product_id)
-left join category on category.id = product.category_id)
-order by orders." .$sort_by." ".$sort_order;
+left join category on category.id = product.category_id)";
 
     $query = mysqli_query($con,$select) or die(mysqli_error($con));
 
@@ -45,5 +39,3 @@ order by orders." .$sort_by." ".$sort_order;
     include_once("../../views/order_product/list.php");
     // print_r($data);
     // exit;
-"<a class = 'active' href='/controller/property/list.php?page="
-                . $i . '&filter_input=' . $filter_input . "'>"  . $i .   " </a>";

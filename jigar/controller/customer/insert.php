@@ -14,7 +14,7 @@
 
 // print_r($_POST);
 // exit;
-
+include_once('../session_check.php');
 include_once("../../connection.php");
 
 if(isset($_POST['btn_submit']))

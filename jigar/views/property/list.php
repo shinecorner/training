@@ -1,4 +1,7 @@
 <?php include_once("../../header.php"); ?>
+
+
+
 <script type="text/javascript">
   $(document).ready(function() {
     $(".cdelete").click(function() {
@@ -11,107 +14,66 @@
       }
     });
   });
-</script>
+</script> 
 
 
 
 
-  <div class="container">
+<div class="container">
+  <div class="row">
 
-    <div class="row">
-      <form align="center" method="get" action="/controller/property/list.php">
-        <input type="text" name="filter_input" value="<?php echo $filter_input; ?>" id="filter_input">
-        <input type="submit" name="search" value="search">
-        <button class="btn btn-danger" href="<?php echo '../../controller/property/list.php' ?>" value="Reset"> <a href="<?php echo '../../controller/property/list.php' ?>"> Reset </a> </button>
+    <a class="btn btn-primary" href="../../views/property/insert.php"> Add Record </a>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered" id="property_list">
+        <thead>
+          <tr>
+            <th scope="col"> Id </th>
+            <th scope="col"> Type </th>
+            <th scope="col">Square Feet</th>
+            <th scope="col">Direction</th>
+            <th scope="col">Discription</th>
+            <th scope="col">Is Sold</th>
+            <th scope="col">Evidance Date</th>
+            <th scope="col">Update</th>
+            <th scope="col">Remove</th>
+            
 
-      </form>
 
-    </div>
-    <div class="row">
+          </tr>
+        </thead>
+        <tbody id="userData">
+          <?php foreach ($data as $key => $row) : ?>
 
-      <a class="btn btn-primary" href="../../views/property/insert.php"> Add Record </a>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <table class="table table-bordered">
-          <thead>
             <tr>
-              <th scope="col">
-                 
-                <?php
-                
+              <th scope="row"><?php echo $row["id"]; ?></th>
+              <td><?php echo $row["type"]; ?></td>
+              <td><?php echo $row["sq_feet"]; ?></td>
+              <td><?php echo $row["direction"]; ?></td>
+              <td><?php echo $row["discription"]; ?></td>
+              <td><?php echo $row["is_sold"]; ?></td>
+              <td><?php echo $row["evidance_date"]; ?></td>
 
-                if (isset($filter_input)) {
-                echo  "<a href='/controller/property/list.php?filter_input=" . $filter_input . "&sort_by=id&sort_property=" . ($sort_property == 'ASC' ? 'DESC' : 'ASC') . "'>
-      Id
-    </a>";
-                } else {
-                 echo  "<a href='/controller/property/list.php?sort_by=id&sort_property=" . ($sort_property == 'ASC' ? 'DESC' : 'ASC') . "'>
-      Id
-    </a>";
-                }
-
-                ?>
-
-
-
-              </th>
-              <th scope="col"> <a href="<?php echo '../../controller/property/list.php?sort_by=type&sort_property=' . ($sort_property == 'ASC' ? 'DESC' : 'ASC') ?>">Type </a></th>
-              <th scope="col">Square Feet</th>
-              <th scope="col">Direction</th>
-              <th scope="col">Discription</th>
-              <th scope="col">Is Sold</th>
-              <th scope="col">Evidance Date</th>
-              <th scope="col">Actions</th>
-              <th scope="col">Status</th>
-
-
-            </tr>
-          </thead>
-          <tbody id="userData">
-            <?php foreach ($data as $key => $row) : ?>
-
-              <tr>
-                <th scope="row"><?php echo $row["id"]; ?></th>
-                <td><?php echo $row["type"]; ?></td>
-                <td><?php echo $row["sq_feet"]; ?></td>
-                <td><?php echo $row["direction"]; ?></td>
-                <td><?php echo $row["discription"]; ?></td>
-                <td><?php echo $row["is_sold"]; ?></td>
-                <td><?php echo $row["evidance_date"]; ?></td>
-
-                <td>
-                  <a class="btn btn-primary" href="<?php echo '../../controller/property/edit.php?id=' . $row['id'] ?>">Edit</a>
-                  <a class="btn btn-danger" href="<?php echo '../../controller/property/delete.php?id=' . $row['id'] ?>">delete</a>
+              <td>
+                <a class="btn btn-primary" href="<?php echo '../../controller/property/edit.php?id=' . $row['id'] ?>">Edit</a>
                 </td>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
+                <td>
+                <a class="btn btn-danger" href="<?php echo '../../controller/property/delete.php?id=' . $row['id'] ?>">delete</a>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
 
-        <div class="pagination">
-          <?php
-
-          // include_once("../../controller/property/pagination.php");
-
-          $pagLink =  "";
-          // echo $pagLink.=$i = $page ? 'selected' : '';
-          for ($i = 1; $i <= $total_pages; $i++) {
-
-            if (isset($filter_input)) {
-              $pagLink .= "<a class = 'active' href='/controller/property/list.php?page="
-                . $i . '&filter_input=' . $filter_input . "'>"  . $i .   " </a>";
-            } else {
-              $pagLink .= "<a class = 'active' href='/controller/property/list.php?page=" . $i . "'>   
-                                              " . $i . " </a>";
-            }
-          };
-          echo $pagLink;
-
-          ?>
-
-        </div>
-      </div>
     </div>
   </div>
-  <?php include_once("../../footer.php"); ?>
+</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#property_list").DataTable({
+      "pageLength": 2
+    });
+  });
+</script>
+<?php include_once("../../footer.php"); ?>
