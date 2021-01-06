@@ -3,6 +3,7 @@
 // print_r($_POST);
 // exit;
 
+include_once("../session_check.php");
 include_once("../../connection.php");
 $customer_id = $_POST['customer_id'];
 $properties = $_POST['property_id'];

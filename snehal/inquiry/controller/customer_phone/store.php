@@ -2,6 +2,7 @@
 // print_r($_POST);
 // exit;
 
+include_once("../session_check.php");
 include_once("../../connection.php");
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];

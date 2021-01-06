@@ -14,6 +14,9 @@
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
   <ul class="navbar-nav">
   <li class="nav-item">
+      <a class="nav-link" href=""></a>
+    </li>
+   <li class="nav-item active">
       <a class="nav-link" href="/controller/inquery/list.php">Inquiry</a>
     </li>
     <li class="nav-item">
@@ -33,6 +36,9 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/controller/ajaxcategory/list.php">Ajax Category</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/controller/logout.php">Logout</a>
     </li>
   </ul>
 </nav>     

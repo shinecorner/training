@@ -1,6 +1,6 @@
 <?php
 
-include_once("../../header.php"); 
+include_once("../session_check.php");
 include_once("../../connection.php");
 if(count($_POST)>0)
 {
@@ -18,6 +18,3 @@ if(count($_POST)>0)
     }
 	$message = "Record Modified Successfully";
 }
-
-
-include_once("../../footer.php");

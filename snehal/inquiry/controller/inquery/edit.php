@@ -1,4 +1,5 @@
 <?php
+include_once("../session_check.php");
 include_once("../../connection.php");
 
 $selected_customer_id = $_GET['customer_id'];
@@ -7,8 +8,6 @@ $selected_property_ids = [];
 
 $q_c = "select  * from customer";
 
-$result_c = mysqli_query($conn,$q_c);
-$customers = mysqli_fetch_all($result_c,MYSQLI_ASSOC);
 
 $q_p = "select  * from property";
 

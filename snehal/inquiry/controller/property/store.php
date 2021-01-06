@@ -1,6 +1,7 @@
 <?php
 //print_r($_POST);
 
+include_once("../session_check.php");
 include_once("../../connection.php");
 $type = $_POST['type'];
 $sq_foot = $_POST['sq_foot'];

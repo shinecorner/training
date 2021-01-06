@@ -1,4 +1,6 @@
 <?php
+
+include_once("../session_check.php");
 include_once("../../connection.php");
 
 $q_c = "select  * from customer";

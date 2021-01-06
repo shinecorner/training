@@ -1,4 +1,6 @@
 <?php
+
+include_once("../session_check.php");
 include_once("../../connection.php");
 
 $total_records_per_page = 2;

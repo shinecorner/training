@@ -1,6 +1,8 @@
 <?php
 
 //  print_r($_GET);
+
+include_once("../session_check.php");
 include_once("../../connection.php");
  $record = [];
  
