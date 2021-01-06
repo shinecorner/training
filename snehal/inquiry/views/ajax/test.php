@@ -20,7 +20,7 @@ $(document).ready(function() {
                 var html = '<tr>';
                 html += '<td>' + json.id + '</td>';
                 html += '<td>' + json.fname + '</td>';
-                 html += '<td>' + json.lname + '</td></tr>';
+                html += '<td>' + json.lname + '</td></tr>';
                 $('#container').append(html);
                 // $("#container").html("ID: " + data);
             });
@@ -29,47 +29,50 @@ $(document).ready(function() {
     </script>
 
     <button type="button" id="check_ajax">Add</button>
-    <div class="row">
-        <div class="col-6">
-            <form action="/controller/customer/store.php" method="post">
-                <div class="form-group">
-                    <label for="fname">Frist Name</label>
-                    <input type="text" name="fname" class="form-control" id="fname" placeholder="Enter your First Name">
-                </div>
-                <div class="form-group">
-                    <label for="lname">Last Name</label>
-                    <input type="text" name="lname" class="form-control" id="lname" placeholder="Enter your Last Name">
-                </div>
-            </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <form action="/controller/customer/store.php" method="post">
+                    <div class="form-group">
+                        <label for="fname">Frist Name</label>
+                        <input type="text" name="fname" class="form-control" id="fname"
+                            placeholder="Enter your First Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name</label>
+                        <input type="text" name="lname" class="form-control" id="lname"
+                            placeholder="Enter your Last Name">
+                    </div>
+                </form>
+
+            </div>
 
         </div>
-
-    </div>
-    <?php 
+        <?php 
     $sql = "select  * from customer";
     $result = mysqli_query($conn,$sql);
     $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
     ?>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody id="container">
-            <?php foreach($rows as $filedname => $row):?>
-            <tr>
-                <td><?php echo $row['id'] ?></td>
-                <td><?php echo $row['fname'] ?></td>
-                <td><?php echo $row['lname'] ?></td>
-            </tr>
-            <?php endforeach;?>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="container">
+                <?php foreach($rows as $filedname => $row):?>
+                <tr>
+                    <td><?php echo $row['id'] ?></td>
+                    <td><?php echo $row['fname'] ?></td>
+                    <td><?php echo $row['lname'] ?></td>
+                </tr>
+                <?php endforeach;?>
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+    </div>
     <?php include_once("../../footer.php"); ?>
-    <!-- </body>
-</html> -->

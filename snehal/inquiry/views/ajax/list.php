@@ -1,6 +1,7 @@
     <?php include_once("../../header.php"); ?>
 
-    <h2>Customer List</h2>
+    <div class="container">
+        <h2>Customer List</h2>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -22,7 +23,5 @@
 
             </tbody>
         </table>
-
-        <?php include_once("../../footer.php"); ?>
-        <!-- </body>
-</html> -->
+    </div>
+    <?php include_once("../../footer.php"); ?>
