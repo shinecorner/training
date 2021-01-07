@@ -1,5 +1,7 @@
 <?php
+include_once('../session_check.php');
 include_once("../../connection.php");
+
 
 $delete_query = "delete from order_product where order_id = " . $_POST['order'];
 $delete_result = mysqli_query($con, $delete_query) or die(mysqli_error($con));

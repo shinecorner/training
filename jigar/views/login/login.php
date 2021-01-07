@@ -1,14 +1,4 @@
-<!doctype html>
-
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../asset/css/bootstrap.min.css">
-    <script src="../../asset/js/jquery.min.js"></script>
-    <script src="../../asset/vendor/jquery-validation-1.19.2/dist/jquery.validate.min.js"></script>
-    <script src="../../asset/js/bootstrap.min.js"></script>
+<?php include_once("../../header.php"); ?>
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -52,6 +42,5 @@
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-</body>
-
-</html>
+    
+    <?php include_once("../../footer.php"); ?>

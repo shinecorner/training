@@ -4,6 +4,7 @@
 
 // print_r($_GET);
 // exit;
+include_once('../session_check.php');
 include_once("../../connection.php");
 
 

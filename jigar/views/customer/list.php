@@ -1,7 +1,5 @@
 <?php include_once("../../header.php"); ?>
 
-
-<!-- <script src="jquery-3.5.1.js"></script> -->
 <script type="text/javascript">
   $(document).ready(function() {
     $(".cdelete").click(function() {
@@ -14,63 +12,54 @@
       }
     });
   });
-</script>
-
-
+</script> 
 
 <div class="container">
   <div class="row">
 
     <a class="btn btn-primary" href="../../views/customer/insert.php"> Add Record </a>
+    
   </div>
   <div class="row">
     <div class="col-12">
-      <table class="table table-bordered">
+      <table id="customer_list" class="table table-bordered" style="width:100%">
         <thead>
           <tr>
             <th scope="col">Id</th>
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Actions</th>
+            <th scope="col">Update</th>
           </tr>
         </thead>
+
+
         <tbody>
-          <?php foreach ($data as $key => $row) : ?>
-
-
+          <?php foreach ($data as $record) : ?>
             <tr>
-              <th scope="row"><?php echo $row["id"]; ?></th>
-              <td><?php echo $row["firstname"]; ?></td>
-              <td><?php echo $row["lastname"]; ?></td>
+              <td><?php echo $record['id'] ?></td>
+              <td><?php echo $record['firstname'] ?></td>
+              <td><?php echo $record['lastname'] ?></td>
 
-              <td><a class="btn btn-primary" href="<?php echo '../../controller/customer/edit.php?id=' . $row['id'] ?>">Edit</a> </td>
-              <td><button type="button" href="<?php echo '../../controller/customer/delete.php?id=' . $row['id'] ?>" class="btn btn-danger cdelete" data-id="<?php echo $row['id']; ?>">delete</button> </td>
+              <td>
+              <a class="btn btn-primary" href="<?php echo '../../controller/customer/edit.php?id=' . $row['id'] ?>">Edit</a> 
+              </td>
+              <td>
+              <button type="button" href="<?php echo '../../controller/customer/delete.php?id=' . $row['id'] ?>" class="btn btn-danger cdelete" data-id="<?php echo $row['id']; ?>">delete</button> </td>
               </td>
             </tr>
           <?php endforeach; ?>
         </tbody>
       </table>
-      <div class="pagination">
-        <?php
-
-        include_once("../../controller/customer/pagination.php");
-
-        for ($i = 1; $i <= $total_pages; $i++) {
-          if ($i == $page) {
-            $pagLink .= "<a class = 'active' href='/controller/customer/list.php?page="
-              . $i . "'>" . $i . " </a>";
-          } else {
-            $pagLink .= "<a href='/controller/customer/list.php?page=" . $i . "'>   
-                                              " . $i . " </a>";
-          }
-        };
-        echo $pagLink;
-
-        ?>
-
-      </div>
 
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#customer_list").DataTable({
+      "pageLength": 2
+    });
+  });
+</script>
 <?php include_once("../../footer.php"); ?>
