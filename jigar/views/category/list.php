@@ -32,7 +32,7 @@
         <input type="text" name="name" class="form-control" id="name" placeholder="Enter your Category Name">
       </div>
 
-      <button type="submit" id="submit_btn" class="btn btn-primary">Submit</button>
+      <button type="submit" id="submit_btn" name="btn_submit" class="btn btn-primary">Submit</button>
     </form>
 
   </div>
@@ -42,16 +42,13 @@
     <tr>
       <th>id</th>
       <th>Category Name</th>
-
     </tr>
   </thead>
   <tbody id="category_list">
-    <?php foreach ($category_data as $filedname => $row) : ?>
+    <?php foreach ($category_data as $key => $row) : ?>
       <tr>
         <td><?php echo $row['id'] ?></td>
         <td><?php echo $row['name'] ?></td>
-
-
       </tr>
     <?php endforeach; ?>
 

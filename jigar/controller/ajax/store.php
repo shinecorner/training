@@ -5,7 +5,8 @@
 include_once('../session_check.php');
 include_once("../../connection.php");
 
-
+if(isset($_POST['btn_submit']))
+{
 $insert_category = "insert into category values('','$_POST[name]')";
 
 
@@ -18,10 +19,11 @@ if($c_query)
     $category_data = mysqli_fetch_all($result,MYSQLI_ASSOC);
     $specific_row = $category_data[0];
     echo json_encode($specific_row);
-    exit;
+    exit;    
 
 }
 
+}
 
 // include_once("../../views/category/insert.php");
 

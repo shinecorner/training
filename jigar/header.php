@@ -86,6 +86,9 @@
           <a class="nav-link" href="/controller/category/list.php">Category</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="/controller/deal/insert.php">Deal</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="/controller/logout.php">Log Out</a>
         </li>
       </ul>
