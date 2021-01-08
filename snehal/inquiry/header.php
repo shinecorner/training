@@ -37,10 +37,16 @@
                     <a class="nav-link" href="/controller/customer_phone/list.php">Customer Phone</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/controller/ajax/list.php">Ajax</a>
+                    <a class="nav-link" href="/controller/deal/list.php">Deal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/controller/ajaxcategory/list.php">Ajax Category</a>
+                    <a class="nav-link" href="/views/ajax/test.php">Ajax</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/views/ajaxcategory/test.php">Ajax Category</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/views/ajaxcategory/test.php">Ajax Deal</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/controller/logout.php">Logout</a>
