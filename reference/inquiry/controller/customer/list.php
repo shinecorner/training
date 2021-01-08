@@ -13,3 +13,6 @@ $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
 
 include_once("../../views/customer/list.php");
 ?>
+
+
+document.getElementById("form_id").reset();
