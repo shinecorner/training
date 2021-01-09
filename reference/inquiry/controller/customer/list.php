@@ -16,3 +16,12 @@ include_once("../../views/customer/list.php");
 
 
 document.getElementById("form_id").reset();
+
+
+
+This answer is not useful
+You can reset it with jquery.
+
+Use Below code
+
+$("#form_id").reset();

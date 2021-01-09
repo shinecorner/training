@@ -3,27 +3,24 @@
 
 include_once("../session_check.php");
 include_once("../../connection.php");
-
+include_once("../../controller/ajaxdeal/list.php");
 $property_id = $_POST['property_id'];
 $customer_id = $_POST['customer_id'];
 $sq_foot_price = $_POST['sq_foot_price'];
 $sq_foot_maintenance = $_POST['sq_foot_maintenance'];
 $pgvcl_charge = $_POST['pgvcl_charge'];
 $token_amount = $_POST['token_amount'];
-// $remaining_amount = $_POST['remaining_amount'];
+$remaining_amount = $_POST['remaining_amount'];
 
-$q = "INSERT INTO deal (property_id, customer_id, sq_foot_price, sq_foot_maintenance, pgvcl_charge, token_amount)
-VALUES ('".$property_id."', '".$customer_id."', '".$sq_foot_price."', '".$sq_foot_maintenance."', '".$pgvcl_charge."', '".$token_amount."')";
-$sql ="select sq_foot from property";
-$result = mysqli_query($conn,$sql);
-$rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
-// print_r($rows);
-// exit;
+$q = "INSERT INTO deal (property_id, customer_id, sq_foot_price, sq_foot_maintenance, pgvcl_charge, token_amount, remaining_amount)
+VALUES ('".$property_id."', '".$customer_id."', '".$sq_foot_price."', '".$sq_foot_maintenance."', '".$pgvcl_charge."', '".$token_amount."', '".$remaining_amount."')";
 
 // echo $q;
-// exit ;
-if ($result) {
-    // header('Location: /controller/deal/list.php');
+// exit;
+$result = mysqli_query($conn,$q);
+
+if($result)
+{
     if (isset($_GET['submit'])) {
         {
     class Deal
@@ -58,13 +55,15 @@ if ($result) {
     echo $remaining_ammout->getremainingPrice();
     $result = mysqli_query($conn, $q);
     
-        
-        // exit;
-    
+    header('Location: /controller/ajaxdeal/test.php');
+    exit;
 }
-    }
-}
+
 else
 {
-    echo 'abc';
-}   
+    exit('misstake in qurey');
+}
+
+// var_dump($result);
+// exit;
+?>
