@@ -1,69 +1,77 @@
 <?php
-//print_r($_POST);
+// print_r($_POST);
+// exit;
 
 include_once("../session_check.php");
 include_once("../../connection.php");
-include_once("../../controller/ajaxdeal/list.php");
-$property_id = $_POST['property_id'];
-$customer_id = $_POST['customer_id'];
-$sq_foot_price = $_POST['sq_foot_price'];
-$sq_foot_maintenance = $_POST['sq_foot_maintenance'];
-$pgvcl_charge = $_POST['pgvcl_charge'];
-$token_amount = $_POST['token_amount'];
-$remaining_amount = $_POST['remaining_amount'];
 
-$q = "INSERT INTO deal (property_id, customer_id, sq_foot_price, sq_foot_maintenance, pgvcl_charge, token_amount, remaining_amount)
-VALUES ('".$property_id."', '".$customer_id."', '".$sq_foot_price."', '".$sq_foot_maintenance."', '".$pgvcl_charge."', '".$token_amount."', '".$remaining_amount."')";
-
-// echo $q;
-// exit;
-$result = mysqli_query($conn,$q);
-
-if($result)
+class Deal
 {
-    if (isset($_GET['submit'])) {
-        {
-    class Deal
-    {
-        public $countBasePrice;
-        public $sq_foot;
-        public $sq_foot_price;
-        public $sq_foot_maintenance;
-        public $pgvcl_charge;
-        public $token_amount;
 
-        public function setBasePrice($sq_foot, $sq_foot_price, $token_amount)
-        {
-            $this->sq_foot = $sq_foot;
-            $this->$sq_foot = $rows;
-            $this->sq_foot_price = $sq_foot_price;
-            $this->token_amount = $token_amount;
-        }
-        public function getremaining_amount()
-        {
-            $remaining_amount = 0;
-            $remaining_amount += ($this->sq_foot * $this->sq_foot_price);
-            $remaining_amount += ($this->sq_foot * $this->sq_foot_maintenance);
-            $remaining_amount += ($this->pgvcl_charge);
-            $remaining_amount -= ($this->token_amount);
-        }
+    //property
+
+    public $countBasePrice;
+    public $sqfoot;
+    public $Sqfootprice;
+    public $countMaintenance = 250;
+    public $pgvclCharge = 10000;
+    public $tokenAmount;
+
+    //method
+    
+    public function setBasePrice($sq_foot, $price, $token)
+    {
+        $this->sqfoot = $sq_foot;
+        $this->Sqfootprice = $price;
+        $this->tokenAmount = $token;
     }
 
-    $remaining_ammout = new deal;
-    $remaining_ammout->setBasePrice('$_POST[sq_foot_maintenance]', '$_POST[sq_feet_price]', '$_POST[token_amount]');
-    $remaining_ammout->setBasePrice();
-    echo $remaining_ammout->getremainingPrice();
-    $result = mysqli_query($conn, $q);
-    
-    header('Location: /controller/ajaxdeal/test.php');
-    exit;
+    public function getremainingamount()
+    {
+        $total = 0;
+        $total += ($this->sqfoot * $this->Sqfootprice);
+        $total += ($this->sqfoot * $this->countMaintenance);
+        $total += ($this->pgvclCharge);
+        $total -= ($this->tokenAmount);
+        return $total;
+    //    echo $total;
+    //    exit;
+    }
 }
-
-else
-{
-    exit('misstake in qurey');
-}
-
-// var_dump($result);
+// print_r($_POST);
 // exit;
-?>
+if (!empty($_POST['property']) && !empty($_POST['sq_foot_price']) && !empty($_POST['token_amount'])) {
+    //  echo $total;
+    //    exit;
+    $property_id = $_POST['property'];
+    $customer_id = $_POST['customer'];
+    $sq_foot_price = $_POST['sq_foot_price'];
+    $token_amount = $_POST['token_amount'];
+
+    $p_sql = "select * from property where id = " . $property_id;
+    // echo $p_sql;
+    // exit;
+    $resultP = mysqli_query($conn, $p_sql);
+
+    $property = mysqli_fetch_all($resultP, MYSQLI_ASSOC);
+    $property = $property[0];
+    $deal = new Deal;
+    $deal->setBasePrice($property['sq_foot'], $sq_foot_price, $token_amount);
+    $remaining_amount = $deal->getremainingamount();
+    
+    $sql = "INSERT INTO deal (property_id, customer_id, sq_foot_price, sq_foot_maintenance, pgvcl_charge, token_amount, remaining_amount) values ('".$property_id."', '".$customer_id."', '".$sq_foot_price."', '250', '10000', '".$token_amount."', '".$remaining_amount."')";
+    // echo $sql;
+    // exit;
+    $result = mysqli_query($conn,$sql);
+    echo $remaining_amount;
+    exit;
+
+    
+} 
+
+else 
+{
+    echo "abc";
+}
+
+exit;

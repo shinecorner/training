@@ -1,12 +1,21 @@
 <?php
-
-include_once("../session_check.php");
+include_once('../session_check.php');
 include_once("../../connection.php");
 
-$sql = "select  * from deal ";
-
+$sql = "select property.id as p_id,property.type,property.sq_feet,customer.fname,customer.id as c_id
+from ((customer_property
+left join property on property.id = customer_property.property_id)
+left join customer on customer.id = customer_property.customer_id)";
 $result = mysqli_query($conn,$sql);
 $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+    
 
-include_once("../../views/ajaxdeal/insert.php");
-?>
+$record = [];
+
+foreach ($rows as $key => $row) {
+    $record[$row["p_id"]]["property_id"] = $row["p_id"];
+    $record[$row["p_id"]]["fname"][$row['c_id']] = $row["fname"];
+}
+include_once("../../views/inquiry/list.php");
+    // print_r($record);
+    // exit;

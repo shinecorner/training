@@ -31,8 +31,8 @@ footer {
 
 
 <footer>
-    <p>Author: Hege Refsnes: <br />
-        <a href="mailto:hege@example.com">hege@example.com</a>
+    <p>Snehal Kalariya<br />
+        <a href="mailto:kalariyasnehal8@gmail.com">scj@gmail.com</a>
     </p>
 </footer>
 

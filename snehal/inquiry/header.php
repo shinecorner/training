@@ -11,6 +11,7 @@
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/vendor/jquery.dataTables.min.js"></script>
     <script src="/assets/vendor/dataTables.bootstrap4.min.js"></script>
+    <script src="/assets/vendor/jquery-validation-1.19.2/dist/jquery.validate.min.js"></script>
     <link rel="stylesheet" href="/assets/vendor/dataTables.bootstrap4.min.css">
 </head>
 
@@ -46,7 +47,7 @@
                     <a class="nav-link" href="/views/ajaxcategory/test.php">Ajax Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/views/ajaxcategory/test.php">Ajax Deal</a>
+                    <a class="nav-link" href="/controller/ajaxdeal/insert.php">Ajax Deal</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/controller/logout.php">Logout</a>

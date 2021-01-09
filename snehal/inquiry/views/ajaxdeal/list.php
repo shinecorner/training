@@ -5,17 +5,17 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>id</th>
+                    <th>Id</th>
                     <th>Property id</th>
                     <th>Customer id</th>
                     <th>per Sq foot price</th>
                     <th>per Sq foot Maintaions</th>
                     <th>PGVCL Charge</th>
                     <th>Token amount</th>
-                    <th> remaining Amount</th>
+                    <th>Remaining Amount</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="customer_list">
                 <?php foreach($rows as $filedname => $row):?>
                 <tr>
                     <td><?php echo $row['id'] ?></td>

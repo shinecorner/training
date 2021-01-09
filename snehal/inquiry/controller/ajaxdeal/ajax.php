@@ -16,7 +16,7 @@ if($result)
 {
     $deal_id = mysqli_insert_id($con);
     $sql = "select  * from deal where id = $deal_id ";
-    $result = mysqli_query($con,$sql);
+    $result = mysqli_query($conn,$sql);
     $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
     $specific_row = $rows[0];
     echo json_encode($specific_row);
