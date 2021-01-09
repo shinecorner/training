@@ -1,8 +1,7 @@
 <?php include_once("../../header.php"); ?>
-
 <div class="container">
     <h2>Dealing form</h2>
-    <form action="<?php echo '../../controller/deal/store.php' ?>" method="post">
+    <form action="<?php echo '../../controller/deal/store.php' ?>" id="dealForm" method="post">
         <div class="form-group">
             <label for="customer">Customer </label>
             <select name="customer" class="form-control" id="customer">
@@ -16,7 +15,7 @@
             <label for="property">Property </label>
             <select name="property" class="form-control" id="property">
                 <?php foreach ($propertydata as $key => $val) :  ?>
-                    <option value="<?php echo $val['id'] ?>"> <?php echo $val['sq_feet']; ?> </option>
+                    <option value="<?php echo $val['id'] ?>"> <?php echo $val['type']. '-' . $val['sq_feet']; ?> </option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -43,11 +42,9 @@
         <button type="submit" id="submit_btn" name="btn_submit" class="btn btn-primary">Submit</button>
         <button type="reset" id="result" class="btn btn-danger">Reset</button>
 
-       <table id="deal_list">
-       <tr>
-       <td> </td>
-       </tr>
-       </table>
+       <div id="remaining_price_container">
+
+       </div>
 
 
 
@@ -61,26 +58,39 @@ $("#reset").on("click", function(e) {
 <script type="text/javascript">
     var test = ['sandip', 'xyz'];
     $(document).ready(function (){
+        $("#dealForm").validate({
+            rules: {
+                property: {
+                    required: true
+                },
+                customer: {
+                    required: true,
+                },
+                sq_feet_price: {
+                    required: true,
+                },
+                token_amount: {
+                    required: true,
+                },
+                sq_feet_maintenance: {
+                    required: true,
+                },
+                pgvcl_charge: {
+                    required: true,
+                },
+            }
+        });
         $('#submit_btn').click(function (){
-
             let customer = $('#customer').val()
             let property = $('#property').val()
             let sq_feet_price = $('#sq_feet_price').val()
             let sq_feet_maintenance = $('#sq_feet_maintenance').val()
             let pgvcl_charge = $('#pgvcl_charge').val()
             let token_amount = $('#token_amount').val()
-            $.post( "../../controller/deal/store.php", { customer: customer,  property: property, sq_feet_price: sq_feet_price, sq_feet_maintenance: sq_feet_maintenance, pgvcl_charge: pgvcl_charge, token_amount: token_amount}, function( response ) {
-                console.log(response);
-                detail = JSON.parse(response)
-
-                var html = '<tr>';
-                html += '<td>' + detail.id + '</td>';
-                html += '<td>' + detail.customer + '</td>';
-                html += '<td>' + detail.property + '</td>';
-                html += '</tr>';
-                $('#deal_list').append(html)
-                // $( ".result" ).html( data );
+            $.post( "/controller/deal/store.php", { customer: customer,  property: property, sq_feet_price: sq_feet_price, sq_feet_maintenance: sq_feet_maintenance, pgvcl_charge: pgvcl_charge, token_amount: token_amount}, function( response ) {
+                $('#remaining_price_container').html(response)
             });
+            return false;
         });
     });
 </script>

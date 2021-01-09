@@ -9,7 +9,7 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-$con  = mysqli_connect('localhost', 'root', '', 'buildcon');
+include_once("../../connection.php");
 $count = 0;
 
 // $servername = "localhost";

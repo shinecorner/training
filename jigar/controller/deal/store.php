@@ -8,7 +8,6 @@ error_reporting(E_ALL);
 
 include_once('../session_check.php');
 include_once("../../connection.php");
-include_once("../../views/deal/insert.php");
 
 // if(isset($_POST['btn_submit']))
 // {
@@ -74,23 +73,28 @@ class Deal
         // $total += ($this->)
     }
 }
-
-if (isset($_POST['btn_submit'])) {
+if (!empty($_POST['property']) && !empty($_POST['sq_feet_price']) && !empty($_POST['token_amount'])) {
     $property = $_POST['property'];
     $sq_feet_price = $_POST['sq_feet_price'];
     $token_amount = $_POST['token_amount'];
 
-    $jigar = new Deal;
-    $jigar->setBasePrice($property, $sq_feet_price, $token_amount);
+    $p_query = "select * from property where id = " . $property;
+    $resultP = mysqli_query($con, $p_query);
 
-    echo $jigar->getremainingPrice();
+    $propertydata = mysqli_fetch_all($resultP, MYSQLI_ASSOC);
+    $propertyData = $propertydata[0];
+    $deal = new Deal;
+    $deal->setBasePrice($propertyData['sq_feet'], $sq_feet_price, $token_amount);
+
+
+    echo $deal->getremainingPrice();
 } 
 else 
 {
     echo "";
 }
 
-exit("hello");
+exit;
 
 
 // $bharti->setBasePrice(2300, 800, 1000);
