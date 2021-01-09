@@ -1,30 +1,4 @@
 <?php include_once("../../header.php"); ?>
-<script type="text/javascript">
-    var test = ['sandip', 'xyz'];
-    $(document).ready(function (){
-        $('#submit_btn').click(function (){
-
-            let customer = $('#customer').val()
-            let property = $('#property').val()
-            let sq_feet_price = $('#sq_feet_price').val()
-            let sq_feet_maintenance = $('#sq_feet_maintenance').val()
-            let pgvcl_charge = $('#pgvcl_charge').val()
-            let token_amount = $('#token_amount').val()
-            $.post( "/controller/deal/store.php", { customer: customer,  property: property,sq_feet_price: sq_feet_price,sq_feet_maintenance: sq_feet_maintenance,pgvcl_charge: pgvcl_charge,token_amount: token_amount}, function( response ) {
-                console.log(response);
-                detail = JSON.parse(response)
-
-                var html = '<div>';
-                html += '<td>' + detail.id + '</td>';
-                html += '<td>' + detail.customer + '</td>';
-                html += '<td>' + detail.property + '</td>';
-                html += '</tr>';
-                $('#remaining_balance').html(html)
-                // $( ".result" ).html( data );
-            });
-        });
-    });
-</script>
 
 <div class="container">
     <h2>Dealing form</h2>
@@ -66,16 +40,50 @@
             <label for="token_amount">Token Amount:</label>
             <input type="text" name="token_amount" class="form-control" id="token_amount" placeholder="Enter Token Amount">
         </div>
+        <button type="submit" id="submit_btn" name="btn_submit" class="btn btn-primary">Submit</button>
+        <button type="reset" id="result" class="btn btn-danger">Reset</button>
 
-        <!-- <div class="form-group">
-            <label for="remaining_balance">Remaining Balance:</label>
-            <input type="text" name="remaining_balance" class="form-control" id="remaining_balance" placeholder="Enter Remaining Balance">
-        </div> -->
+       <table id="deal_list">
+       <tr>
+       <td> </td>
+       </tr>
+       </table>
 
-        <button type="submit" name="btn_submit" id="submit_btn" class="btn btn-primary">Submit</button>
-        <div id="remaining_balance" class="form-group">
-            
-        </div>
+
+
     </form>
 </div>
+<script type="text/javascript">
+$("#reset").on("click", function(e) {
+    $("#result").empty();
+});
+</script>
+<script type="text/javascript">
+    var test = ['sandip', 'xyz'];
+    $(document).ready(function (){
+        $('#submit_btn').click(function (){
+
+            let customer = $('#customer').val()
+            let property = $('#property').val()
+            let sq_feet_price = $('#sq_feet_price').val()
+            let sq_feet_maintenance = $('#sq_feet_maintenance').val()
+            let pgvcl_charge = $('#pgvcl_charge').val()
+            let token_amount = $('#token_amount').val()
+            $.post( "../../controller/deal/store.php", { customer: customer,  property: property, sq_feet_price: sq_feet_price, sq_feet_maintenance: sq_feet_maintenance, pgvcl_charge: pgvcl_charge, token_amount: token_amount}, function( response ) {
+                console.log(response);
+                detail = JSON.parse(response)
+
+                var html = '<tr>';
+                html += '<td>' + detail.id + '</td>';
+                html += '<td>' + detail.customer + '</td>';
+                html += '<td>' + detail.property + '</td>';
+                html += '</tr>';
+                $('#deal_list').append(html)
+                // $( ".result" ).html( data );
+            });
+        });
+    });
+</script>
+
+
 <?php include_once("../../footer.php"); ?>

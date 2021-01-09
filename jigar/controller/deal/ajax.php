@@ -7,18 +7,16 @@ include_once("../../connection.php");
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 
-$q = "INSERT INTO customer (fname, lname)
+$q = "INSERT INTO deal (fname, lname)
 VALUES ('".$fname."', '".$lname."')";
 
-// echo $q;
-// exit;
 $result = mysqli_query($conn,$q);
 
 if($result)
 {
-    $customer_id = mysqli_insert_id($conn);
-    $sql = "select  * from customer where id = $customer_id ";
-    $result = mysqli_query($conn,$sql);
+    $deal_id = mysqli_insert_id($con);
+    $sql = "select  * from deal where id = $deal_id ";
+    $result = mysqli_query($con,$sql);
     $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
     $specific_row = $rows[0];
     echo json_encode($specific_row);
