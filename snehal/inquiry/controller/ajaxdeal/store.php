@@ -48,17 +48,10 @@ class DisscountDeal extends Deal{
 
     public function getremainingamount()
     {
-        $total = 0;
-        $total += ($this->sqfoot * $this->Sqfootprice);
-        $total += ($this->sqfoot * $this->countMaintenance);
+        $total = parent::getremainingamount();
         $total -= ($this->disscount);
-        $total += ($this->pgvclCharge);
-        $total -= ($this->tokenAmount);
         return $total;
-    //    echo $total;
-    //    exit;
     }
-    
 }
 // print_r($_POST);
 // exit;
@@ -81,18 +74,14 @@ if (!empty($_POST['property']) && !empty($_POST['sq_foot_price']) && !empty($_PO
     $property = $property[0];
     
     if($disscount){
-    $dissdeal = new DisscountDeal;
-    $dissdeal->setBasePrice($property['sq_foot'], $sq_foot_price, $token_amount);
-    $dissdeal->setDisscount($disscount);
-    $remaining_amount = $dissdeal->getremainingamount();
+        $dealObj = new DisscountDeal;
+        $dealObj->setDisscount($disscount);
     }
-    
     else{
-    $deal = new Deal;
-    $deal->setBasePrice($property['sq_foot'], $sq_foot_price, $token_amount);
-    $remaining_amount = $deal->getremainingamount();
+        $dealObj = new Deal;
     }
-    
+    $dealObj->setBasePrice($property['sq_foot'], $sq_foot_price, $token_amount);
+    $remaining_amount = $dealObj->getremainingamount();
     
     $sql = "INSERT INTO deal (property_id, customer_id, sq_foot_price, sq_foot_maintenance, pgvcl_charge, token_amount, remaining_amount, disscount) values ('".$property_id."', '".$customer_id."', '".$sq_foot_price."', '250', '10000', '".$token_amount."', '".$remaining_amount."', '".$disscount."')";
     // echo $sql;
