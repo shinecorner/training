@@ -22,9 +22,9 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="sq_foot_price">Per Sqaure Feet Price</label>
+                <label for="sq_foot_price">Per Sqaure foot Price</label>
                 <input type="text" name="sq_foot_price" class="form-control" id="sq_foot_price"
-                    placeholder="Enter Sqaure Feet">
+                    placeholder="Enter Sqaure foot">
             </div>
 
             <div class="form-group">
@@ -34,16 +34,22 @@
             </div>
 
             <div class="form-group">
-                <label for="pgvcl_charge">PGVCL Charge:</label>
+                <label for="disscount">Disscount </label>
+                <input type="text" name="disscount" class="form-control" id="disscount">
+            </div>
+
+            <div class="form-group">
+                <label for="pgvcl_charge">PGVCL Charge</label>
                 <input type="text" name="pgvcl_charge" value="10000" class="form-control" id="pgvcl_charge" readonly>
             </div>
 
             <div class="form-group">
-                <label for="token_amount">Token Amount:</label>
+                <label for="token_amount">Token Amount</label>
                 <input type="text" name="token_amount" class="form-control" id="token_amount"
                     placeholder="Enter Token Amount">
             </div>
             <button type="submit" id="submit_btn" name="btn_submit" class="btn btn-primary">Submit</button>
+
             <button type="reset" id="result" class="btn btn-danger">Reset</button>
 
             <div id="remaining_amount_container">
@@ -55,18 +61,18 @@
     </form>
 </div>
 
+
 <script type="text/javascript">
 $("#reset").on("click", function(e) {
     $("#result").empty();
 });
 </script>
 <script type="text/javascript">
-var test = ['snehal', 'patel'];
 $(document).ready(function() {
     $("#dealForm").validate({
         rules: {
             property: {
-                required: true,
+                required: true
             },
             customer: {
                 required: true,
@@ -83,27 +89,29 @@ $(document).ready(function() {
             pgvcl_charge: {
                 required: true,
             },
-        }
-    });
-    $('#submit_btn').click(function() {
-        let customer = $('#customer').val()
-        let property = $('#property').val()
-        let sq_foot_price = $('#sq_foot_price').val()
-        let sq_foot_maintenance = $('#sq_foot_maintenance').val()
-        let pgvcl_charge = $('#pgvcl_charge').val()
-        let token_amount = $('#token_amount').val()
-        $.post("/controller/ajaxdeal/store.php", {
-            property: property,
-            customer: customer,
-            sq_foot_price: sq_foot_price,
-            sq_foot_maintenance: sq_foot_maintenance,
-            pgvcl_charge: pgvcl_charge,
-            token_amount: token_amount
-        }, function(response) {
-            console.log(response);
-            $('#remaining_amount_container').html(response)
-        });
-        return false;
+        },
+        submitHandler: function(form) {
+            let customer = $('#customer').val()
+            let property = $('#property').val()
+            let sq_foot_price = $('#sq_foot_price').val()
+            let sq_foot_maintenance = $('#sq_foot_maintenance').val()
+            let disscount = $('#disscount').val()
+            let pgvcl_charge = $('#pgvcl_charge').val()
+            let token_amount = $('#token_amount').val()
+            $.post("/controller/ajaxdeal/store.php", {
+                customer: customer,
+                property: property,
+                sq_foot_price: sq_foot_price,
+                sq_foot_maintenance: sq_foot_maintenance,
+                disscount: disscount,
+                pgvcl_charge: pgvcl_charge,
+                token_amount: token_amount
+            }, function(response) {
+                $('#remaining_amount_container').html(response)
+            });
+            return false;
+        },
+
     });
 });
 </script>

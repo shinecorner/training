@@ -38,6 +38,28 @@ class Deal
     //    exit;
     }
 }
+class DisscountDeal extends Deal{
+    public $disscount;
+
+    public function setDisscount($disscount)
+    {
+        $this->disscount = $disscount;
+    }
+
+    public function getremainingamount()
+    {
+        $total = 0;
+        $total += ($this->sqfoot * $this->Sqfootprice);
+        $total += ($this->sqfoot * $this->countMaintenance);
+        $total -= ($this->disscount);
+        $total += ($this->pgvclCharge);
+        $total -= ($this->tokenAmount);
+        return $total;
+    //    echo $total;
+    //    exit;
+    }
+    
+}
 // print_r($_POST);
 // exit;
 if (!empty($_POST['property']) && !empty($_POST['sq_foot_price']) && !empty($_POST['token_amount'])) {
@@ -47,7 +69,9 @@ if (!empty($_POST['property']) && !empty($_POST['sq_foot_price']) && !empty($_PO
     $customer_id = $_POST['customer'];
     $sq_foot_price = $_POST['sq_foot_price'];
     $token_amount = $_POST['token_amount'];
-
+    $disscount = (isset($_POST['disscount']) && !empty($_POST['disscount']) ? $_POST['disscount'] : 0 );
+// echo $disscount;
+// exit;
     $p_sql = "select * from property where id = " . $property_id;
     // echo $p_sql;
     // exit;
@@ -55,11 +79,22 @@ if (!empty($_POST['property']) && !empty($_POST['sq_foot_price']) && !empty($_PO
 
     $property = mysqli_fetch_all($resultP, MYSQLI_ASSOC);
     $property = $property[0];
+    
+    if($disscount){
+    $dissdeal = new DisscountDeal;
+    $dissdeal->setBasePrice($property['sq_foot'], $sq_foot_price, $token_amount);
+    $dissdeal->setDisscount($disscount);
+    $remaining_amount = $dissdeal->getremainingamount();
+    }
+    
+    else{
     $deal = new Deal;
     $deal->setBasePrice($property['sq_foot'], $sq_foot_price, $token_amount);
     $remaining_amount = $deal->getremainingamount();
+    }
     
-    $sql = "INSERT INTO deal (property_id, customer_id, sq_foot_price, sq_foot_maintenance, pgvcl_charge, token_amount, remaining_amount) values ('".$property_id."', '".$customer_id."', '".$sq_foot_price."', '250', '10000', '".$token_amount."', '".$remaining_amount."')";
+    
+    $sql = "INSERT INTO deal (property_id, customer_id, sq_foot_price, sq_foot_maintenance, pgvcl_charge, token_amount, remaining_amount, disscount) values ('".$property_id."', '".$customer_id."', '".$sq_foot_price."', '250', '10000', '".$token_amount."', '".$remaining_amount."', '".$disscount."')";
     // echo $sql;
     // exit;
     $result = mysqli_query($conn,$sql);
