@@ -38,6 +38,14 @@
                 <input type="text" name="disscount" class="form-control" id="disscount">
             </div>
 
+            <div>
+                <label><input type="checkbox" name="is_emi" value="checked"> Do You Want Emi </label>
+            </div>
+            <div style="display: none" id="emiamount" class="form-group">
+                <label for="emiamount">How many EMI cost </label>
+                <input type="text" name="emiamount" class="form-control" placeholder="Enter Your EMI Amount">
+            </div>
+
             <div class="form-group">
                 <label for="pgvcl_charge">PGVCL Charge</label>
                 <input type="text" name="pgvcl_charge" value="10000" class="form-control" id="pgvcl_charge" readonly>
@@ -111,6 +119,15 @@ $(document).ready(function() {
             });
             return false;
         },
+    });
+    $('input[type="checkbox"]').click(function() {
+        if ($("input[type='checkbox']").prop('checked') == true) {
+            $("#emiamount").show();
+            // alert("snehal");
+        } else {
+            $("#emiamount").hide();
+            // alert("Patel");
+        }
 
     });
 });

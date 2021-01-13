@@ -12,6 +12,8 @@
     <script src="/assets/vendor/jquery.dataTables.min.js"></script>
     <script src="/assets/vendor/dataTables.bootstrap4.min.js"></script>
     <script src="/assets/vendor/jquery-validation-1.19.2/dist/jquery.validate.min.js"></script>
+
+
     <link rel="stylesheet" href="/assets/vendor/dataTables.bootstrap4.min.css">
 </head>
 

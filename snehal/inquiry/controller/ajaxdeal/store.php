@@ -38,19 +38,41 @@ class Deal
     //    exit;
     }
 }
-class DisscountDeal extends Deal{
-    public $disscount;
+class DiscountDeal extends Deal{
+    public $discount;
 
-    public function setDisscount($disscount)
+    public function setDiscount($discount)
     {
-        $this->disscount = $disscount;
+        $this->discount = $discount;
     }
 
     public function getremainingamount()
     {
         $total = parent::getremainingamount();
-        $total -= ($this->disscount);
+        $total -= ($this->discount);
         return $total;
+    }
+}
+class EmiDeal extends Deal{
+    public $emiamount;
+
+    public function setEmiammount($emi)
+    {
+        $this->emiamount = $emi;
+    }
+    public function getEmiamount()
+    {
+        $total = parent::getremainingamount();
+        $emimonth = ceil($this->total / $this->emiamount);
+        $cehckamount = ($this->emimonth * $this->getemiamount);
+        $emiremainingamount = ($this->total - $this->checkamount);
+        if($emiremainingamount != $total)
+        {
+            $emimonth += 1;
+            $total = ($this->emiremainingamount + $this->cehckamount); 
+            echo "you have to pay last month emi amount is" .$emiremainingamount;
+            return $emiremainingamount;         
+        }
     }
 }
 // print_r($_POST);
@@ -62,8 +84,10 @@ if (!empty($_POST['property']) && !empty($_POST['sq_foot_price']) && !empty($_PO
     $customer_id = $_POST['customer'];
     $sq_foot_price = $_POST['sq_foot_price'];
     $token_amount = $_POST['token_amount'];
-    $disscount = (isset($_POST['disscount']) && !empty($_POST['disscount']) ? $_POST['disscount'] : 0 );
-// echo $disscount;
+    $discount = (isset($_POST['discount']) && !empty($_POST['discount']) ? $_POST['discount'] : 0 );
+    $emiamount = $_POST['emiamount'];
+    $emiamount = (isset($_POST['emiamount']) && !empty($_POST['emiamount']) ? $_POST['emiamount'] : 0 );
+// echo $discount;
 // exit;
     $p_sql = "select * from property where id = " . $property_id;
     // echo $p_sql;
@@ -73,9 +97,14 @@ if (!empty($_POST['property']) && !empty($_POST['sq_foot_price']) && !empty($_PO
     $property = mysqli_fetch_all($resultP, MYSQLI_ASSOC);
     $property = $property[0];
     
-    if($disscount){
-        $dealObj = new DisscountDeal;
-        $dealObj->setDisscount($disscount);
+    if($discount){
+        $dealObj = new DiscountDeal;
+        $dealObj->setDiscount($discount);
+    }
+    elseif($emi)
+    {
+        $dealObj = new EmiDeal;
+        $dealObj->getEmiamount($emi);
     }
     else{
         $dealObj = new Deal;
@@ -83,11 +112,16 @@ if (!empty($_POST['property']) && !empty($_POST['sq_foot_price']) && !empty($_PO
     $dealObj->setBasePrice($property['sq_foot'], $sq_foot_price, $token_amount);
     $remaining_amount = $dealObj->getremainingamount();
     
-    $sql = "INSERT INTO deal (property_id, customer_id, sq_foot_price, sq_foot_maintenance, pgvcl_charge, token_amount, remaining_amount, disscount) values ('".$property_id."', '".$customer_id."', '".$sq_foot_price."', '250', '10000', '".$token_amount."', '".$remaining_amount."', '".$disscount."')";
+        $this->emiamount = $emi;
+    $sql = "INSERT INTO deal (property_id, customer_id, sq_foot_price, sq_foot_maintenance, pgvcl_charge, token_amount, remaining_amount, discount, emiamount, ) values ('".$property_id."', '".$customer_id."', '".$sq_foot_price."', '250', '10000', '".$token_amount."', '".$remaining_amount."', '".$discount."', '".$emimonth."', '".$emiamount."')";
     // echo $sql;
     // exit;
     $result = mysqli_query($conn,$sql);
     echo $remaining_amount;
+    echo "<br/>";
+    echo $emimonth;
+    echo "<br/>";
+    echo $emiamount;
     exit;
 
     
