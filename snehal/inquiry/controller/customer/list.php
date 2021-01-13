@@ -6,8 +6,10 @@ include_once("../../connection.php");
 
 $sql = "select  * from customer ";
 
-$result = mysqli_query($conn,$sql);
-$rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+$result = $conn->query($sql);
+ $rows = $result->fetch_all(MYSQLI_ASSOC);
+// $result = mysqli_query($conn,$sql);
+// $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
 
 include_once("../../views/customer/list.php");
 ?>

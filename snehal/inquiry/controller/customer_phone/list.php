@@ -5,8 +5,8 @@ include_once("../../connection.php");
 
 $sql = "select  c.*,cp.id as cp_id, cp.phone  from customer as c left join customer_phone as cp on c.id=cp.customer_id";
 
-$result = mysqli_query($conn,$sql);
-$rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+$result = $conn->query($sql);
+ $rows = $result->fetch_all(MYSQLI_ASSOC);
 
     foreach($rows as $key => $row)
     {

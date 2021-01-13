@@ -4,10 +4,11 @@
 include_once("../session_check.php");
 include_once("../../connection.php");
 
-    $q = "SELECT c.*,p.type as p_type,p.sq_foot as p_sqfoot,p.id as p_id,cp.id as cp_id FROM customer as c LEFT JOIN customer_property as cp on c.id=cp.customer_id LEFT JOIN property as p on cp.property_id=p.id
+    $sql = "SELECT c.*,p.type as p_type,p.sq_foot as p_sqfoot,p.id as p_id,cp.id as cp_id FROM customer as c LEFT JOIN customer_property as cp on c.id=cp.customer_id LEFT JOIN property as p on cp.property_id=p.id
 ";
-    $result = mysqli_query($conn,$q);
-    $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+    $result = $conn->query($sql);
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
+
     // $records = $rows[0];
     // $records = $q[0];
     //  print_r($rows);

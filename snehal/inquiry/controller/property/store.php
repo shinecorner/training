@@ -11,11 +11,12 @@ $number = $_POST['number'];
 $is_sold = (isset($_POST['is_sold'])) ? $_POST['is_sold'] : 0;
 $aggremnt_date = (isset($_POST['aggremnt_date'])) ? $_POST['aggremnt_date'] : NULL;
 
-$q = "INSERT INTO property (type, sq_foot, dirction, description, number, is_sold, aggremnt_date)
+$sql = "INSERT INTO property (type, sq_foot, dirction, description, number, is_sold, aggremnt_date)
 VALUES ('".$type."', '".$sq_foot."', '".$dirction."', '".$description."', '".$number."', '".$is_sold."','".$aggremnt_date."')";
 // echo $q;
 // exit;
-$result = mysqli_query($conn,$q);
+$result = $conn->query($sql);
+
 
 if($result)
 {

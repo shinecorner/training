@@ -5,12 +5,12 @@ include_once("../session_check.php");
 include_once("../../connection.php");
 $name = $_POST['name'];
 
-$q = "INSERT INTO category (name)
+$sql = "INSERT INTO category (name)
 VALUES ('".$name."')";
 
 // echo $q;
 // exit;
-$result = mysqli_query($conn,$q);
+$result = $conn->query($sql);
 
 if($result)
 {

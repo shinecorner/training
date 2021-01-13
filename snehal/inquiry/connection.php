@@ -1,8 +1,11 @@
 <?php
-$conn = mysqli_connect("localhost", "snehal", "snehal123", "develop_snehal");
-if (!$conn) 
+
+$conn = new mysqli("localhost", "snehal", "snehal123", "develop_snehal");
+
+if ($conn->connect_errno) 
 {
-    echo "Error: Unable to connect to MySQL." ;
+    echo "Failed to connect to MySQL: " . $conn -> connect_error;
     exit;   
 }
+// $conn->close();
 ?>

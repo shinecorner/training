@@ -60,19 +60,11 @@ class EmiDeal extends Deal{
     {
         $this->emiamount = $emi;
     }
-    public function getEmiamount()
+    public function getEmiMonth()
     {
         $total = parent::getremainingamount();
-        $emimonth = ceil($this->total / $this->emiamount);
-        $cehckamount = ($this->emimonth * $this->getemiamount);
-        $emiremainingamount = ($this->total - $this->checkamount);
-        if($emiremainingamount != $total)
-        {
-            $emimonth += 1;
-            $total = ($this->emiremainingamount + $this->cehckamount); 
-            echo "you have to pay last month emi amount is" .$emiremainingamount;
-            return $emiremainingamount;         
-        }
+        $emimonth = ($total / $this->emiamount);
+        return  $emimonth;
     }
 }
 // print_r($_POST);
@@ -85,43 +77,58 @@ if (!empty($_POST['property']) && !empty($_POST['sq_foot_price']) && !empty($_PO
     $sq_foot_price = $_POST['sq_foot_price'];
     $token_amount = $_POST['token_amount'];
     $discount = (isset($_POST['discount']) && !empty($_POST['discount']) ? $_POST['discount'] : 0 );
-    $emiamount = $_POST['emiamount'];
+    $emimonth = (isset($_POST['emimonth']) && !empty($_POST['emimonth']) ? $_POST['emimonth'] : 0 );
     $emiamount = (isset($_POST['emiamount']) && !empty($_POST['emiamount']) ? $_POST['emiamount'] : 0 );
 // echo $discount;
 // exit;
     $p_sql = "select * from property where id = " . $property_id;
     // echo $p_sql;
     // exit;
-    $resultP = mysqli_query($conn, $p_sql);
-
-    $property = mysqli_fetch_all($resultP, MYSQLI_ASSOC);
+   
+  $resultP = $conn->query($p_sql);
+  $property = $resultP->fetch_all(MYSQLI_ASSOC);
+ 
+    
     $property = $property[0];
     
     if($discount){
         $dealObj = new DiscountDeal;
         $dealObj->setDiscount($discount);
     }
-    elseif($emi)
+    elseif($emiamount)
     {
-        $dealObj = new EmiDeal;
-        $dealObj->getEmiamount($emi);
+        $dealObj = new EmiDeal;        
+        $dealObj->setEmiammount($emiamount);        
     }
     else{
         $dealObj = new Deal;
     }
     $dealObj->setBasePrice($property['sq_foot'], $sq_foot_price, $token_amount);
+    if($emiamount)
+    {
+        $emimonth = $dealObj->getEmiMonth($emiamount);
+    }
     $remaining_amount = $dealObj->getremainingamount();
     
-        $this->emiamount = $emi;
-    $sql = "INSERT INTO deal (property_id, customer_id, sq_foot_price, sq_foot_maintenance, pgvcl_charge, token_amount, remaining_amount, discount, emiamount, ) values ('".$property_id."', '".$customer_id."', '".$sq_foot_price."', '250', '10000', '".$token_amount."', '".$remaining_amount."', '".$discount."', '".$emimonth."', '".$emiamount."')";
+        
+    $sql = "INSERT INTO deal (property_id, customer_id, sq_foot_price, sq_foot_maintenance, pgvcl_charge, token_amount, remaining_amount, discount, emimonth, emiamount) values ('".$property_id."', '".$customer_id."', '".$sq_foot_price."', '250', '10000', '".$token_amount."', '".$remaining_amount."', '".$discount."', '".$emimonth."', '".$emiamount."')";
     // echo $sql;
     // exit;
-    $result = mysqli_query($conn,$sql);
-    echo $remaining_amount;
-    echo "<br/>";
-    echo $emimonth;
-    echo "<br/>";
-    echo $emiamount;
+    // $result = mysqli_query($conn,$sql);
+    $result =$conn->query($sql);
+    // $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    
+       if($emimonth){
+                echo $emimonth;
+                echo "<br/>";
+       } 
+       else{
+            echo $remaining_amount;
+            echo "<br/>";
+       }
+        
+        
+    
     exit;
 
     
