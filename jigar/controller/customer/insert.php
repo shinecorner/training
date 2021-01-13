@@ -24,8 +24,8 @@ $insert_order = "insert into customer values('','$_POST[firstname]','$_POST[last
 // echo $insert_order;
 // exit;
 
-
-$o_query = mysqli_query($con,$insert_order) or die(mysqli_error($con));
+$o_query = $con->query($insert_order);
+// $o_query = mysqli_query($con,$insert_order) or die(mysqli_error($con));
 if($o_query)
 {
     header("Location: /controller/customer/insert.php");

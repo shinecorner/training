@@ -7,9 +7,11 @@ include_once("../../connection.php");
 
 $select = "select * from property where id = ".$_GET['id'];
 
-    $query = mysqli_query($con,$select) or die(mysqli_error($con));
+    // $query = mysqli_query($con,$select) or die(mysqli_error($con));
+    $query = $con->query($select);
 
-    $data = mysqli_fetch_all($query,MYSQLI_ASSOC);
+    // $data = mysqli_fetch_all($query,MYSQLI_ASSOC);
+    $data = $query->fetch_all(MYSQLI_ASSOC);
     $property = [];
     if(!empty($data))
     {

@@ -8,9 +8,11 @@ include_once("../../connection.php");
 
 $select = "select * from customer where id = ".$_GET['id'];
 
-    $query = mysqli_query($con,$select) or die(mysqli_error($con));
+$query = $con->query($select);
+    // $query = mysqli_query($con,$select) or die(mysqli_error($con));
 
-    $data = mysqli_fetch_all($query,MYSQLI_ASSOC);
+    $data = $query->fetch_all(MYSQLI_ASSOC);
+    // $data = mysqli_fetch_all($query,MYSQLI_ASSOC);
     $customer = [];
     if(!empty($data))
     {
@@ -20,8 +22,3 @@ $select = "select * from customer where id = ".$_GET['id'];
     //     exit;
     // // $input = [];
 include_once("../../views/customer/edit.php");
-    
-    ?>
-    
-
-

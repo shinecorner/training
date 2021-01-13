@@ -9,7 +9,8 @@ if(isset($_GET['id']))
 {
     $delete = "delete from property where id = ".$_GET['id'];
 
-    $query = mysqli_query($con,$delete);
+    // $query = mysqli_query($con,$delete);
+    $query = $con->query($delete);
 
     if($query)
     {

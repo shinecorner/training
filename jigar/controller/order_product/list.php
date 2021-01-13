@@ -22,9 +22,11 @@ left join order_product on orders.id = order_product.order_id)
 left join product on product.id = order_product.product_id)
 left join category on category.id = product.category_id)";
 
-    $query = mysqli_query($con,$select) or die(mysqli_error($con));
+    // $query = mysqli_query($con,$select) or die(mysqli_error($con));
+    $query = $con->query($select);
 
-    $data = mysqli_fetch_all($query,MYSQLI_ASSOC);
+    // $data = mysqli_fetch_all($query,MYSQLI_ASSOC);
+    $data = $query->fetch_all(MYSQLI_ASSOC);
         
     $input = [];
 

@@ -24,7 +24,7 @@ function inverse($x) {
 try {
 //    echo inverse(2) . "\n";
 //    echo inverse(0) . "\n";
-    echo inverse("xyz") . "\n";
+    echo inverse("xyz") . "\n";	
     echo "hi how are you";
 //    echo "abc";
 //    echo "xyz";

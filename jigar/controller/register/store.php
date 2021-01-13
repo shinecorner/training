@@ -11,9 +11,7 @@ include_once("../../connection.php");
 // Create connection
 // $conn = mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
-if (!$con) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+
 
 $sql = "INSERT INTO users (username, email, password)
 VALUES ('".$_POST['username']."','".$_POST['email']."','".md5($_POST['password'])."')";

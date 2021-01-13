@@ -22,9 +22,11 @@ left join property on property.id = customer_property.property_id)
 left join customer on customer.id = customer_property.customer_id)";
 
 
-    $query = mysqli_query($con,$select) or die(mysqli_error($con));
+    // $query = mysqli_query($con,$select) or die(mysqli_error($con));
+    $query = $con->query($select);
 
-    $data = mysqli_fetch_all($query,MYSQLI_ASSOC);
+    // $data = mysqli_fetch_all($query,MYSQLI_ASSOC);
+    $data = $query->fetch_all(MYSQLI_ASSOC);
         // print_r($data);
         // exit;
         

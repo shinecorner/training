@@ -1,4 +1,22 @@
-<?php include_once("../../header.php"); ?>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Inquiry</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/asset/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="/asset/css/bootstrap.min.css.map"> -->
+  
+  <script src="/asset/js/jquery.min.js"></script>
+    <script src="/asset/js/popper.min.js"></script>
+    <script src="/asset/js/bootstrap.min.js"></script>
+    <script src="/asset/vendor/jquery.dataTables.min.js"></script>
+    <script src="/asset/vendor/dataTables.bootstrap4.min.js"></script>
+    <script src="/asset/vendor/jquery-validation-1.19.2/dist/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="/asset/vendor/dataTables.bootstrap4.min.css">
+    
+    <body>
 
 
     <script type="text/javascript">

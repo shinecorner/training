@@ -13,7 +13,8 @@ $insert_property = "insert into property values('','$_POST[type]','$_POST[sq_fee
 // exit;
 
 
-$p_query = mysqli_query($con,$insert_property) or die(mysqli_error($con));
+// $p_query = mysqli_query($con,$insert_property) or die(mysqli_error($con));
+$p_query = $con->query($insert_property);
 if($p_query)
 {
     header("Location: /controller/property/list.php");

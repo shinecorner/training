@@ -9,9 +9,11 @@ $selected_product = [];
 
 $so_query = "select * from order_product where order_id = $selected_order";
 
-$so_result = mysqli_query($con,$so_query) or die(mysqli_error($con));
+// $so_result = mysqli_query($con,$so_query) or die(mysqli_error($con));
+$so_result = $con->query($so_query);
 
-    $so_data = mysqli_fetch_all($so_result,MYSQLI_ASSOC);
+    // $so_data = mysqli_fetch_all($so_result,MYSQLI_ASSOC);
+    $so_data = $so_result->fetch_all(MYSQLI_ASSOC);
 // print_r($sc_data);
 // exit;
     foreach($so_data as $record)
@@ -23,16 +25,20 @@ $so_result = mysqli_query($con,$so_query) or die(mysqli_error($con));
 
 
     $o_query = "select * from orders";
-    $resulto = mysqli_query($con, $o_query);
+    // $resulto = mysqli_query($con, $o_query);
+    $resulto = $con->query($o_query);
     
-    $orderdata = mysqli_fetch_all($resulto,   MYSQLI_ASSOC);
+    // $orderdata = mysqli_fetch_all($resulto,   MYSQLI_ASSOC);
+    $orderdata = $resulto->fetch_all(MYSQLI_ASSOC);
     
     // print_r($customerdata);
     // exit;
     $p_query = "select * from product";
-    $resultP = mysqli_query($con, $p_query);
+    // $resultP = mysqli_query($con, $p_query);
+    $resultP = $con->query($p_query);
     
-    $productdata = mysqli_fetch_all($resultP, MYSQLI_ASSOC);
+    // $productdata = mysqli_fetch_all($resultP, MYSQLI_ASSOC);
+    $productdata = $resultP->fetch_all(MYSQLI_ASSOC);
     
     
     include_once("../../views/order_product/edit.php");

@@ -9,8 +9,8 @@ if(isset($_POST['btn_submit']))
 {
 $insert_category = "insert into category values('','$_POST[name]')";
 
-
-$c_query = mysqli_query($con,$insert_category) or die(mysqli_error($con));
+$c_query = $con->query($insert_category);
+// $c_query = mysqli_query($con,$insert_category) or die(mysqli_error($con));
 if($c_query)
 {
     header("Location: /controller/category/list.php");

@@ -6,9 +6,11 @@ include_once("../../connection.php");
 
 
 $select = "select * from property ";
-$query = mysqli_query($con, $select) or die(mysqli_error($con));
+// $query = mysqli_query($con, $select) or die(mysqli_error($con));
+$query = $con->query($select);
 
-$data = mysqli_fetch_all($query, MYSQLI_ASSOC);
+// $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
+$data = $query->fetch_all(MYSQLI_ASSOC);
 
 include_once("../../views/property/list.php");
 

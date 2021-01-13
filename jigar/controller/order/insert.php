@@ -13,7 +13,9 @@ $insert_order = "insert into orders values('','$_POST[transaction_num]','$_POST[
 // exit;
 
 
-$o_query = mysqli_query($con,$insert_order) or die(mysqli_error($con));
+// $o_query = mysqli_query($con,$insert_order) or die(mysqli_error($con));
+$o_query = $con->query($insert_order);
+
 if($o_query)
 {
     header("Location: /controller/order/list.php");

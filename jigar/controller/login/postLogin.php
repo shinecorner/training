@@ -20,19 +20,19 @@ $count = 0;
 // Create connection
 
 // Check connection
-if (!$con) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+
 session_start();
 $_SESSION['postLogin.php'] = true;
 
 $sql = "select * from users where username = '".$_POST['username']."'";
-$result = mysqli_query($con, $sql);
+// $result = mysqli_query($con, $sql);
+$result = $con->query($sql);
 // echo mysqli_num_rows($result);exit;
 
 
 if (mysqli_num_rows($result) > 0) {
-    $rs = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    // $rs = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $rs = $result->fetch_all(MYSQLI_ASSOC);
     // print_r($rs);exit;
     $db_password = $rs[0]['password'];
     $user_insert_password = $_POST['password'];

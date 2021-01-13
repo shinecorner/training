@@ -14,8 +14,8 @@ where id = ".$_POST['id'];
 
 // echo $select;
 // exit;
-
-    $query = mysqli_query($con,$select) or die(mysqli_error($con));
+$query = $con->query($select);
+    // $query = mysqli_query($con,$select) or die(mysqli_error($con));
 
     // var_dump($query);
     // exit;
@@ -40,8 +40,3 @@ where id = ".$_POST['id'];
     // // // $input = [];
 // include_once("../../views/property/edit.php");
 // exit("error");
-    
-    ?>
-    
-
-

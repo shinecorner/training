@@ -10,7 +10,8 @@ SET name = '" . $_POST['name'] . "',
 category_id = '" . $_POST['category_id'] . "',
 price = '" . $_POST['price'] . "'
 where id = " . $_POST['id'];
-$query = mysqli_query($con, $select) or die(mysqli_error($con));
+// $query = mysqli_query($con, $select) or die(mysqli_error($con));
+$query = $con->query($select);
 
 // var_dump($query);
 // exit;

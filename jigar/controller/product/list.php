@@ -12,9 +12,11 @@ include_once("../../connection.php");
 $select = "select product.id,product.name,category.name as category_name,product.price from product
             inner join category on product.category_id = category.id";
 
-    $query = mysqli_query($con,$select) or die(mysqli_error($con));
+    // $query = mysqli_query($con,$select) or die(mysqli_error($con));
+    $query = $con->query($select);
 
-    $data = mysqli_fetch_all($query,MYSQLI_ASSOC);
+    // $data = mysqli_fetch_all($query,MYSQLI_ASSOC);
+    $data = $query->fetch_all(MYSQLI_ASSOC);
         // print_r($data);
         // exit;
     // $input = [];

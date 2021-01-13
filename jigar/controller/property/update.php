@@ -17,7 +17,8 @@ where id = ".$_POST['id'];
 // echo $select;
 // exit;
 
-    $query = mysqli_query($con,$select) or die(mysqli_error($con));
+    // $query = mysqli_query($con,$select) or die(mysqli_error($con));
+    $query = $con->query($select);
 
     // var_dump($query);
     // exit;
