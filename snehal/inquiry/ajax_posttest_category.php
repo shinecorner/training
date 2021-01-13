@@ -9,11 +9,11 @@ VALUES ('".$name."')";
 
 // echo $q;
 // exit;
-$result = mysqli_query($conn,$sql);
+$result = $conn->query($sql);
 
 $category_id = mysqli_insert_id($conn);
 $sql = "select  * from category where id = $category_id ";
-$result = mysqli_query($conn,$sql);
-$rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+$result = $conn->query($sql);
+$rows = $result->fetch_all(MYSQLI_ASSOC);
 echo json_encode($rows[0]);
 ?>

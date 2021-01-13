@@ -6,10 +6,16 @@ include_once("../../connection.php");
 session_start();
 
 $sql = "select * from users where username = '".$_POST['username']."'";
-$result = mysqli_query($conn, $sql);
+// print_r($conn);exit;
+// $result = mysqli_query($conn, $sql);
+ $result = $conn->query($sql);
+//  print_r($result);
+//  exit;
+    // $rows = $result -> fetch_all(MYSQLI_ASSOC);
 //echo mysqli_num_rows($result);exit;
 if (mysqli_num_rows($result) > 0) {
-    $rs = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $rs = $result->fetch_all(MYSQLI_ASSOC);
+    // $rs = mysqli_fetch_all($result, MYSQLI_ASSOC);
     $db_password = $rs[0]['password'];
     $user_insert_password = $_POST['password'];
     if($db_password == md5($user_insert_password))

@@ -5,13 +5,14 @@ include_once("../../connection.php");
 
 $q_c = "select  * from customer";
 
-$result_c = mysqli_query($conn,$q_c);
-$customers = mysqli_fetch_all($result_c,MYSQLI_ASSOC);
+$result_c = $conn->query($q_c);
+$customers = $result_c->fetch_all(MYSQLI_ASSOC);
 
 $q_p = "select  * from property";
 
-$result_p = mysqli_query($conn,$q_p);
-$properties = mysqli_fetch_all($result_p,MYSQLI_ASSOC);
+$result_p = $conn->query($q_p);
+$properties = $result_p->fetch_all(MYSQLI_ASSOC);
+
 //print_r($rows);
 // exit ('abc');
 

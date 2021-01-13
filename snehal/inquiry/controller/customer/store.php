@@ -6,12 +6,13 @@ include_once("../../connection.php");
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 
-$q = "INSERT INTO customer (fname, lname)
+$sql = "INSERT INTO customer (fname, lname)
 VALUES ('".$fname."', '".$lname."')";
 
 // echo $q;
 // exit;
-$result = mysqli_query($conn,$q);
+$result = $conn->query($sql);
+
 
 if($result)
 {

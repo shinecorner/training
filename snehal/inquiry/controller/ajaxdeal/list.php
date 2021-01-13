@@ -6,8 +6,8 @@ $sql = "select property.id as p_id,property.type,property.sq_feet,customer.fname
 from ((customer_property
 left join property on property.id = customer_property.property_id)
 left join customer on customer.id = customer_property.customer_id)";
-$result = mysqli_query($conn,$sql);
-$rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+ $result = $conn->query($sql);
+ $rows = $result->fetch_all(MYSQLI_ASSOC);
     
 
 $record = [];

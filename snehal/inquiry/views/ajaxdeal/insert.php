@@ -34,16 +34,17 @@
             </div>
 
             <div class="form-group">
-                <label for="disscount">Disscount </label>
-                <input type="text" name="disscount" class="form-control" id="disscount">
+                <label for="discount">Discount </label>
+                <input type="text" name="discount" class="form-control" id="discount">
             </div>
 
             <div>
                 <label><input type="checkbox" name="is_emi" value="checked"> Do You Want Emi </label>
             </div>
-            <div style="display: none" id="emiamount" class="form-group">
+            <div style="display: none" id="emisection" class="form-group">
                 <label for="emiamount">How many EMI cost </label>
-                <input type="text" name="emiamount" class="form-control" placeholder="Enter Your EMI Amount">
+                <input type="text" name="emiamount" id="emiamount" class="form-control"
+                    placeholder="Enter Your EMI Amount">
             </div>
 
             <div class="form-group">
@@ -103,7 +104,9 @@ $(document).ready(function() {
             let property = $('#property').val()
             let sq_foot_price = $('#sq_foot_price').val()
             let sq_foot_maintenance = $('#sq_foot_maintenance').val()
-            let disscount = $('#disscount').val()
+            let discount = $('#discount').val()
+            let emimonth = $('#emimonth').val()
+            let emiamount = $('#emiamount').val()
             let pgvcl_charge = $('#pgvcl_charge').val()
             let token_amount = $('#token_amount').val()
             $.post("/controller/ajaxdeal/store.php", {
@@ -111,7 +114,9 @@ $(document).ready(function() {
                 property: property,
                 sq_foot_price: sq_foot_price,
                 sq_foot_maintenance: sq_foot_maintenance,
-                disscount: disscount,
+                discount: discount,
+                emimonth: emimonth,
+                emiamount: emiamount,
                 pgvcl_charge: pgvcl_charge,
                 token_amount: token_amount
             }, function(response) {
@@ -122,10 +127,22 @@ $(document).ready(function() {
     });
     $('input[type="checkbox"]').click(function() {
         if ($("input[type='checkbox']").prop('checked') == true) {
-            $("#emiamount").show();
+            $("#discount").prop("disabled", true);
             // alert("snehal");
         } else {
-            $("#emiamount").hide();
+            $("#discount").prop("disabled", false);
+            // alert("Patel");
+        }
+
+    });
+    $('input[type="checkbox"]').click(function() {
+        if ($("input[type='checkbox']").prop('checked') == true) {
+            $("#emisection").show();
+            $('#discount').val("");
+            // alert("snehal");
+        } else {
+            $("#emisection").hide();
+            $('#emiamount').val("");
             // alert("Patel");
         }
 

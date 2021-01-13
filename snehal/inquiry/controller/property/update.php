@@ -7,8 +7,9 @@ if(count($_POST)>0)
     // print_r($_POST);
     // exit;
     $sql = "UPDATE property set type='" . $_POST['type'] . "', sq_foot='" . $_POST['sq_foot'] . "', dirction='" . $_POST['dirction'] . "', description='" . $_POST['description'] . "', number='" . $_POST['number'] . "', is_sold='" . $_POST['is_sold'] . "', aggremnt_date='" . $_POST['aggremnt_date'] . "' WHERE id='" . $_POST['id'] . "'";
-    $result = mysqli_query($conn,$sql);
-        if($result)
+    $result = $conn->query($sql);
+
+    if($result)
     {
         header('Location: /controller/property/list.php');
         exit;

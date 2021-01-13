@@ -3,7 +3,7 @@
 include_once("../session_check.php");
 include_once("../../connection.php");
 $sql = "DELETE FROM customer WHERE id='" . $_GET["id"] . "'";
-$result = mysqli_query($conn,$sql);
+$result = $conn->query($sql);
 
 if($result)
 {

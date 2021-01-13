@@ -7,9 +7,9 @@ include_once("../../connection.php");
 $record = [];
 if(isset($_GET['id']))
 {
-    $q = "SELECT * FROM customer WHERE id='" . $_GET["id"] . "'";
-    $result = mysqli_query($conn,$q);
-    $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+    $sql = "SELECT * FROM customer WHERE id='" . $_GET["id"] . "'";
+    $result = $conn->query($sql);
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
     $record = $rows[0];
     
     // $sql = "UPDATE users set name='" . $_POST['name'] . "' WHERE id='" . $_POST['id'] . "'";
