@@ -1,15 +1,14 @@
 <?php
 // print_r($_POST);
 // exit;
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 include_once("../session_check.php");
 include_once("../../connection.php");
+
 interface calculatable{
     public function setBasePrice($sq_foot, $price, $token);
     public function calculateRemainingAmount();
 }
-class Deal
+class Deal implements calculatable
 {
 
     //property
@@ -30,7 +29,7 @@ class Deal
         $this->tokenAmount = $token;
     }
 
-    public function getremainingamount()
+    public function calculateRemainingAmount()
     {
         $total = 0;
         $total += ($this->sqfoot * $this->Sqfootprice);
@@ -42,7 +41,7 @@ class Deal
     //    exit;
     }
 }
-class DiscountDeal extends Deal{
+class DiscountDeal extends Deal implements calculatable{
     public $discount;
 
     public function setDiscount($discount)
@@ -50,23 +49,23 @@ class DiscountDeal extends Deal{
         $this->discount = $discount;
     }
 
-    public function getremainingamount()
+    public function calculateRemainingAmount()
     {
-        $total = parent::getremainingamount();
+        $total = parent::calculateRemainingAmount();
         $total -= ($this->discount);
         return $total;
     }
 }
-class EmiDeal extends Deal{
+class EmiDeal extends Deal implements calculatable{
     public $emiamount;
 
-    public function setEmiammount($emi)
+    public function setEmiamount($emi)
     {
         $this->emiamount = $emi;
     }
     public function getEmiMonth()
     {
-        $total = parent::getremainingamount();
+        $total = parent::calculateRemainingAmount();
         $emimonth = ($total / $this->emiamount);
         return  $emimonth;
     }
@@ -102,7 +101,7 @@ if (!empty($_POST['property']) && !empty($_POST['sq_foot_price']) && !empty($_PO
     elseif($emiamount)
     {
         $dealObj = new EmiDeal;        
-        $dealObj->setEmiammount($emiamount);        
+        $dealObj->setEmiamount($emiamount);        
     }
     else{
         $dealObj = new Deal;
@@ -112,7 +111,7 @@ if (!empty($_POST['property']) && !empty($_POST['sq_foot_price']) && !empty($_PO
     {
         $emimonth = $dealObj->getEmiMonth($emiamount);
     }
-    $remaining_amount = $dealObj->getremainingamount();
+    $remaining_amount = $dealObj->calculateRemainingAmount();
     
         
     $sql = "INSERT INTO deal (property_id, customer_id, sq_foot_price, sq_foot_maintenance, pgvcl_charge, token_amount, remaining_amount, discount, emimonth, emiamount) values ('".$property_id."', '".$customer_id."', '".$sq_foot_price."', '250', '10000', '".$token_amount."', '".$remaining_amount."', '".$discount."', '".$emimonth."', '".$emiamount."')";

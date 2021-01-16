@@ -28,7 +28,7 @@
                 <td></td>
                 <td></td>
                 <td> <a href="<?php echo '/controller/category/delete.php?id='.$row['id']?>"
-                        class="btn btn-primary">Delete</a>
+                        class="btn btn-danger">Delete</a>
                     <a href="<?php echo '/controller/category/edit.php?id='.$row['id']?>"
                         class="btn btn-primary">Edit</a>
                 </td>
