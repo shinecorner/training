@@ -1,10 +1,14 @@
 <?php
 // print_r($_POST);
 // exit;
-
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 include_once("../session_check.php");
 include_once("../../connection.php");
-
+interface calculatable{
+    public function setBasePrice($sq_foot, $price, $token);
+    public function calculateRemainingAmount();
+}
 class Deal
 {
 

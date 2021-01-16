@@ -41,6 +41,10 @@ include_once("../../connection.php");
 
 ?>
 <?php
+interface calculatable{
+    public function setBasePrice($sq_foot, $price, $token);
+    public function calculateRemainingAmount();
+}
 class Deal
 {
 
