@@ -29,6 +29,7 @@ try {
 //    echo "abc";
 //    echo "xyz";
 } catch (Exception $e) {
+    print_r($e);exit;
 //    if(!is_dir("../uploads/logs")) {
 //        mkdir("../uploads/logs",0777);
 //    }
