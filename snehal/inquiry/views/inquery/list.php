@@ -33,7 +33,7 @@
                     <?php endforeach; ?>
                 </td>
                 <td> <a href="<?php echo '/controller/inquery/delete.php?customer_id='.$cid ?>"
-                        class="btn btn-primary">Delete</a>
+                        class="btn btn-danger">Delete</a>
                     <a href="<?php echo '/controller/inquery/edit.php?customer_id='.$cid ?>"
                         class="btn btn-primary">Edit</a>
                 </td>

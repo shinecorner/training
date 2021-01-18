@@ -36,7 +36,7 @@
                 <td><?php echo $row['is_sold'] ?></td>
                 <td><?php echo $row['aggremnt_date'] ?></td>
                 <td> <a href="<?php echo '/controller/property/delete.php?id='.$row['id']?>"
-                        class="btn btn-primary">Delete</a>
+                        class="btn btn-danger">Delete</a>
                     <a href="<?php echo '/controller/property/edit.php?id='.$row['id']?>"
                         class="btn btn-primary">Edit</a>
                 </td>

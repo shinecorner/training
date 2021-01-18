@@ -27,7 +27,7 @@
                     <td><?php echo $row['fname'] ?></td>
                     <td><?php echo $row['lname'] ?></td>
                     <td> <a href=" <?php echo '/controller/customer/delete.php?id='.$row['id']?>"
-                            class="btn btn-primary">Delete</a>
+                            class="btn btn-danger">Delete</a>
                         <a href="<?php echo '/controller/customer/edit.php?id='.$row['id']?>"
                             class="btn btn-primary">Edit</a>
                     </td>
