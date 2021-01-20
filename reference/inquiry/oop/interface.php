@@ -1,11 +1,11 @@
 <?php
+
 interface fillable{
     public function fill();
 }
 interface startable{
     public function start();
 }
-
 
 class ElectricCar implements fillable, startable {
     public function start(){
@@ -101,3 +101,4 @@ echo "Fill: " . $car->fill();
 //echo "Fill: " . $car->fill();
 //echo '<br>';
 //echo "Run: " . $car->run();
+?>

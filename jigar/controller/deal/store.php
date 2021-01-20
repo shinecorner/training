@@ -42,10 +42,10 @@ include_once("../../connection.php");
 ?>
 <?php
 interface calculatable{
-    public function setBasePrice($sq_foot, $price, $token);
+    public function setBasePrice($sq_feet, $price, $token);
     public function calculateRemainingAmount();
 }
-class Deal
+class Deal implements calculatable
 {
 
     //property
@@ -60,13 +60,13 @@ class Deal
 
     //method
 
-    public function setBasePrice($sq_feet, $charge, $token)
+    public function setBasePrice($sq_feet, $price, $token)
     {
         $this->sqfeet = $sq_feet;
-        $this->Sqfeetcharge = $charge;
+        $this->Sqfeetcharge = $price;
         $this->tokenAmount = $token;
     }
-    public function getremainingPrice()
+    public function calculateRemainingAmount()
     {
         $total = 0;
         $total += ($this->sqfeet * $this->Sqfeetcharge);
@@ -81,7 +81,7 @@ class Deal
     }
 }
 
-class Discount extends Deal
+class Discount extends Deal implements calculatable
 {
     //property
     public $discount;
@@ -91,15 +91,15 @@ class Discount extends Deal
     {
         $this->discount = $discount;
     }
-    public function getremainingPrice()
+    public function calculateRemainingAmount()
     {
-        $total = parent::getremainingPrice();
+        $total = parent::calculateRemainingAmount();
         $total -= ($this->discount);
         return $total;
     }
 }
 
-class Emi extends Deal
+class Emi extends Deal implements calculatable
 {
     // property 
     public  $emi_number;
@@ -110,9 +110,9 @@ class Emi extends Deal
     {
         $this->emi_amount = $emi_amount;
     }
-    public function getNumberOfEmi()
+    public function calculateRemainingAmount()
     {
-        $total = parent::getremainingPrice();
+        $total = parent::calculateRemainingAmount();
         $this->emi_number = $total / ($this->emi_amount);
         return $this->emi_number;
         // echo $total;
@@ -159,7 +159,7 @@ if (!empty($_POST['property']) && !empty($_POST['sq_feet_price']) && !empty($_PO
     }
 
     $dealObj->setBasePrice($propertyData['sq_feet'], $sq_feet_price, $token_amount);
-    $remaining_balance = $dealObj->getremainingPrice();
+    $remaining_balance = $dealObj->calculateRemainingAmount();
     if ($emi_amount) {
 
         $number_of_emi = $dealObj->getNumberOfEmi();
