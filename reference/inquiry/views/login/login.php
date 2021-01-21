@@ -31,7 +31,7 @@
 <body>
 <?php session_start();?>
 <?php if(isset($_SESSION["login_error"]) && !empty($_SESSION["login_error"])):?>
-<div class="alert alert-danger alert-dismissible" role="alert">
+<div class="alert alert-success alert-dismissible" role="alert">
     <strong><?php echo $_SESSION["login_error"];?></strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>

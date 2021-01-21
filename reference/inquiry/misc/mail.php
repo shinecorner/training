@@ -6,7 +6,6 @@ use PHPMailer\PHPMailer\SMTP;
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-
 require '../PHPMailer/src/Exception.php';
 require '../PHPMailer/src/PHPMailer.php';
 require '../PHPMailer/src/SMTP.php';
