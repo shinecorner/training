@@ -10,13 +10,13 @@ interface Logabble{
 class DBLogger implements Logabble {
     public function writeLogs($error){
 
-        
+
         $conn = new mysqli("localhost", "snehal", "snehal123", "develop_snehal");
-        
+
          $sql = "INSERT INTO error (error, created, file, line_number) values ('".$error->getMessage()."', '".date("Y-m-d H:i:s")."', '".$error->getFile()."', '".$error->getLine()."')";
         //  echo $sql;
         //  exit;
-    
+
     $result =$conn->query($sql);
         return "database enter entry";
     }
@@ -36,7 +36,7 @@ class FileLogger implements Logabble {
     ];
     fputcsv($file, $error_detail);
     fclose($file);
-      
+
         return "Csv file enter entry";
     }
 }
@@ -69,5 +69,5 @@ if (isset($_POST['logger']) && !empty($_POST['logger']) && $_POST['logger'] == '
 elseif(isset($_POST['logger']) && !empty($_POST['logger'])  && $_POST['logger'] == 'file'){
     $log = new FileLogger;
 }
-    $log->writeLogs($e);
-}
+$log->writeLogs($e);
+} 

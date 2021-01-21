@@ -49,10 +49,16 @@
                     <a class="nav-link" href="/views/ajaxcategory/test.php">Ajax Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/controller/ajaxdeal/list.php">Ajax Deal</a>
+                    <a class="nav-link" href="/views/ajaxdeal/insert.php">Ajax Deal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/controller/error/list.php">Error</a>
+                    <a class="nav-link" href="/views/error/list.php">Error</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/controller/product/list.php">Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/views/product/insert.php">Product Item</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/controller/logout.php">Logout</a>
