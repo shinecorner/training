@@ -20,7 +20,7 @@ $(document).ready(function() {
                 <div class="form-group">
                     <label for="fname">Logger Type</label>
                     <select class="custom-select custom-select-lg mb-3" name="logger_type" id="logger_type">
-                        <option value="">Select car Type</option>
+                        <option value="">Select Logger Type</option>
                         <option value="database">DBLogger</option>
                         <option value="file">FileLogger</option>
                     </select>

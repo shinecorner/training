@@ -19,14 +19,13 @@
                 <?php foreach($rows as $filedname => $row):?>
                 <tr>
                     <td><?php echo $row['id'] ?></td>
-                    <th><?php echo $row['property_id'] ?></td>
+                    <td><?php echo $row['property_id'] ?></td>
                     <td><?php echo $row['customer_id'] ?></td>
                     <td><?php echo $row['sq_foot_price'] ?></td>
                     <td><?php echo $row['sq_foot_maintenance'] ?></td>
                     <td><?php echo $row['pgvcl_charge'] ?></td>
                     <td><?php echo $row['token_amount'] ?></td>
                     <td><?php echo $row['remaining_amount'] ?></td>
-                    </td>
                 </tr>
                 <?php endforeach;?>
 

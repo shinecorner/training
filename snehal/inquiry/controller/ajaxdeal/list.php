@@ -7,7 +7,9 @@ from ((customer_property
 left join property on property.id = customer_property.property_id)
 left join customer on customer.id = customer_property.customer_id)";
  $result = $conn->query($sql);
- $rows = $result->fetch_all(MYSQLI_ASSOC);
+//  var_dump ($result);
+//  exit;
+  $rows = $result->fetch_all(MYSQLI_ASSOC);
     
 
 $record = [];
