@@ -14,7 +14,7 @@ $result = $conn->query($q);
 
 if($result)
 {
-    $deal_id = mysqli_insert_id($con);
+    $deal_id = mysqli_insert_id($conn);
     $sql = "select  * from deal where id = $deal_id ";
     $result = $conn->query($sql);
     $rows = $result->fetch_all(MYSQLI_ASSOC);

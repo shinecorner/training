@@ -31,6 +31,17 @@
 
 <body>
     <?php session_start();?>
+    <?php if(isset($_SESSION["login_verify"]) && !empty($_SESSION["login_verify"])):?>
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <strong><?php echo $_SESSION["login_verify"];?></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <?php $_SESSION["login_verify"] = "";?>
+    <?php endif;?>
+
+
     <?php if(isset($_SESSION["login_error"]) && !empty($_SESSION["login_error"])):?>
     <div class="alert alert-danger alert-dismissible" role="alert">
         <strong><?php echo $_SESSION["login_error"];?></strong>
@@ -52,7 +63,8 @@
         </div>
 
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <a href="/views/register/register.php" class="link-primary">Register Now</a>
     </form>
 </body>
 

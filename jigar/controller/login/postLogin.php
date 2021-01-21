@@ -24,7 +24,7 @@ $count = 0;
 session_start();
 $_SESSION['postLogin.php'] = true;
 
-$sql = "select * from users where username = '".$_POST['username']."'";
+$sql = "select * from users where username = '".$_POST['username']."' and is_active = 1";
 // $result = mysqli_query($con, $sql);
 $result = $con->query($sql);
 // echo mysqli_num_rows($result);exit;
@@ -41,18 +41,18 @@ if (mysqli_num_rows($result) > 0) {
         // print_r($rs[0]['username']);
         // exit("if");
         $_SESSION["username"] = $rs[0]['username'];
-
-        header("Location: /index.php");
-        exit;
+       
     }
     else{
-        exit("else");
+        
         $_SESSION["login_error"] = "Detail not match with our Database";
-        header("Location: /index.php");
+        header("Location: /views/login/login.php");
         exit;
     }
 } else {
-    exit('aavu kai chhe nahi');
+    $_SESSION["login_error"] = "user is not active";
+    header("Location: /views/login/login.php");
+    exit;
 }
 
 

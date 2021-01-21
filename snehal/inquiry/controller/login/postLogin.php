@@ -5,7 +5,7 @@ include_once("../../connection.php");
 
 session_start();
 
-$sql = "select * from users where username = '".$_POST['username']."'";
+$sql = "select * from users where username = '".$_POST['username']."'and is_active = 1";
 // print_r($conn);exit;
 // $result = mysqli_query($conn, $sql);
  $result = $conn->query($sql);

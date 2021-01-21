@@ -69,5 +69,5 @@ if (isset($_POST['logger']) && !empty($_POST['logger']) && $_POST['logger'] == '
 elseif(isset($_POST['logger']) && !empty($_POST['logger'])  && $_POST['logger'] == 'file'){
     $log = new FileLogger;
 }
-$log->writeLogs($e);
+    $log->writeLogs($e);
 }
