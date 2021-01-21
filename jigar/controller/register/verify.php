@@ -13,8 +13,6 @@ if (isset($_GET['token']) && ($_GET['id'])) {
 }
 
 
-
-
 $select = "select * from users where id = '".$_GET['id']."'";
 $r_query = $con->query($select);
 

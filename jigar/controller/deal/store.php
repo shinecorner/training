@@ -179,7 +179,7 @@ if (!empty($_POST['property']) && !empty($_POST['sq_feet_price']) && !empty($_PO
     }
     
 } else {
-    echo "not available ૂ";
+    echo "not available ";
 }
 
 exit;
