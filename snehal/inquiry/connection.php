@@ -1,6 +1,6 @@
 <?php
 
-$conn = new mysqli("localhost", "snehal", "snehal123", "develop_snehal");
+$conn = new mysqli("localhost", "shine", "shine", "develop_snehal");
 
 if ($conn->connect_errno) 
 {

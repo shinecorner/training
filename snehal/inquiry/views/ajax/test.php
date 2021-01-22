@@ -24,6 +24,7 @@ $(document).ready(function() {
                 $('#container').append(html);
                 // $("#container").html("ID: " + data);
             });
+        return false;
     })
 });
     </script>
