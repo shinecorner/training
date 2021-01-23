@@ -80,18 +80,20 @@ class Triangle extends Shape
     }
 }
 
-if (isset($_POST['shape']) && !empty($_POST['shape']) && $_POST['shape'] == "circle") {
-    
-    $areaclass = new Circle($_POST);
-} elseif (isset($_POST['shape']) && !empty($_POST['shape']) && $_POST['shape'] == "square") {
+if(isset($_POST['shape']) && !empty($_POST['shape'])){
+    if ($_POST['shape'] == "circle") {
 
-    $areaclass = new Square($_POST);
-} elseif (isset($_POST['shape']) && !empty($_POST['shape']) && $_POST['shape'] == "rectangle") {
+        $areaclass = new Circle($_POST);
+    } elseif ($_POST['shape'] == "square") {
 
-    $areaclass = new Rectangle($_POST);
-} elseif (isset($_POST['shape']) && !empty($_POST['shape']) && $_POST['shape'] == "triangle") {
+        $areaclass = new Square($_POST);
+    } elseif ($_POST['shape'] == "rectangle") {
 
-    $areaclass = new Triangle($_POST);
-}
-echo $areaclass->calculatearea();
+        $areaclass = new Rectangle($_POST);
+    } elseif ($_POST['shape'] == "triangle") {
+
+        $areaclass = new Triangle($_POST);
+    }
+    echo $areaclass->calculatearea();
 // exit("data Succesfully");
+}
