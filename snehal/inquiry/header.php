@@ -61,6 +61,9 @@
                     <a class="nav-link" href="/views/investment/list.php">Investment</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/views/transport/list.php">Transport</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/controller/logout.php">Logout</a>
                 </li>
             </ul>

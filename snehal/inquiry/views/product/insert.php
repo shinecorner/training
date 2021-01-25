@@ -3,7 +3,7 @@
 
 <div class="container">
     <h2>Product from</h2>
-    <form action="<?php echo '/controller/product/insert.php' ?>" id="dealForm" method="post">
+    <form action="<?php echo '/controller/product/insert.php' ?>" id="productForm" method="post">
         <div class="col-6">
             <div class="form-group">
                 <label for="productname">Product Name</label>
@@ -60,7 +60,7 @@ $("#reset").on("click", function(e) {
 </script>
 <script type="text/javascript">
 $(document).ready(function() {
-    $("#dealForm").validate({
+    $("#productForm").validate({
         rules: {
             productname: {
                 required: true
