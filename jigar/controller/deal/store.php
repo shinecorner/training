@@ -114,7 +114,7 @@ class Emi extends Deal implements calculatable
     {
         $total = parent::calculateRemainingAmount();
         $this->emi_number = $total / ($this->emi_amount);
-        return $this->emi_number;
+        return $this->emi_number;   
         // echo $total;
         // exit;
     }

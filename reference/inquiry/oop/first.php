@@ -17,9 +17,17 @@ require 'industry.php';
 $fabricationQuotation = new Industry\FabricationQuotation(20,'pvc');
 // $fabricationQuotation->setFiber();
 $fabricationQuotation->setSqfeet(50);
-echo $fabricationQuotation->getPrice();
+//echo $fabricationQuotation->getPrice();
 
 // $assemblingQuotation = new Industry\AssemblingQuotation;
 // $assemblingQuotation->setFiber(20, 'pvc');
 // $assemblingQuotation->setWeight(12);
 // echo $assemblingQuotation->getPrice();
+
+class Message{
+    public function giveMessage($message, $media=null){
+        return "Message: $message, through $media";
+    }
+}
+$msg = new Message;
+echo $msg->giveMessage("Hello world");
