@@ -11,7 +11,7 @@ class DBLogger implements Logabble {
     public function writeLogs($error){
 
 
-        $conn = new mysqli("localhost", "snehal", "snehal123", "develop_snehal");
+        $conn = new mysqli("localhost", "root", "", "develop_snehal");
 
          $sql = "INSERT INTO error (error, created, file, line_number) values ('".$error->getMessage()."', '".date("Y-m-d H:i:s")."', '".$error->getFile()."', '".$error->getLine()."')";
         //  echo $sql;

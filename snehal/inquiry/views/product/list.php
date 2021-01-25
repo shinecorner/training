@@ -16,7 +16,7 @@
                 <?php foreach($rows as $filedname => $row):?>
                 <tr>
                     <td><?php echo $row['id'] ?></td>
-                    <td><?php echo $row['product_name'] ?></td>
+                    <td><?php echo $row['productname'] ?></td>
                     <td><?php echo $row['size'] ?></td>
                     <td><?php echo $row['color'] ?></td>
                     <td><?php echo $row['price'] ?></td>

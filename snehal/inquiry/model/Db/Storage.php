@@ -11,7 +11,7 @@ Class Storage implements storable {
 
     public function store()
     {      
-        $conn = new \mysqli("localhost", "snehal", "snehal123", "develop_snehal");  
+        $conn = new \mysqli("localhost", "root", "", "develop_snehal");
         
         // exit("abc");
          $sql = "INSERT INTO product (productname, size, color, price) values ('".$this->detail['productname']."', '".$this->detail['size']."', '".$this->detail['color']."', '".$this->detail['price']."')";

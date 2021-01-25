@@ -12,7 +12,7 @@
             </div>
             <div class="form-group">
                 <label for="size">Size</label>
-                <select class="custom-select custom-select-lg mb-3 form-control" name="size" id="size">
+                <select class="custom-select custom-select-lg mb-3" name="size" id="size">
                     <option value="">Select Your Size</option>
                     <option value="M">M</option>
                     <option value="S">S</option>
@@ -33,7 +33,7 @@
             </div>
             <div class="form-group">
                 <label for="store_type">Store Type</label>
-                <select class="custom-select custom-select-lg mb-3 form-control" name="store_type" id="store_type">
+                <select class="custom-select custom-select-lg mb-3" name="store_type" id="store_type">
                     <option value="">Select Store Type</option>
                     <option value="database">DBStorge</option>
                     <option value="file">CSVStorge</option>

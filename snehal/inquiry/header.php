@@ -37,10 +37,7 @@
                     <a class="nav-link" href="/controller/property/list.php">Property</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/controller/customer_phone/list.php">Customer Phone</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/controller/deal/list.php">Deal</a>
+                    <a class="nav-link" href="/controller/customer_phone/list.php">CustomerPhone</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/views/ajax/test.php">Ajax</a>
@@ -49,16 +46,19 @@
                     <a class="nav-link" href="/views/ajaxcategory/test.php">Ajax Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/views/ajaxdeal/insert.php">Ajax Deal</a>
+                    <a class="nav-link" href="/views/ajaxdeal/insert.php">AjaxDeal</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/views/error/list.php">Error</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/controller/product/list.php">Product</a>
+                    <a class="nav-link" href="/views/product/insert.php">ProductItem</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/views/product/insert.php">Product Item</a>
+                    <a class="nav-link" href="/views/product/list.php">Area</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/views/investment/list.php">Investment</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/controller/logout.php">Logout</a>
