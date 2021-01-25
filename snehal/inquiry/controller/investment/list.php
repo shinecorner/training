@@ -1,5 +1,6 @@
 <?php
-
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 include_once("../session_check.php");
 include_once("../../connection.php");
 
@@ -9,16 +10,17 @@ include_once("../../connection.php");
 abstract class Investment
 {
     public $amount;
+    public $stock;
 
     public function __construct($amount, $stock = null)
     {
         $this->amount = $amount;
-
+        $this->stock = $stock;
         // print_r($this->detail);
         // exit;
     }
 
-    public abstract function calculateRetun();
+    public abstract function calculateReturn();
 }
 
 class Fd extends Investment
@@ -28,7 +30,7 @@ class Fd extends Investment
     public static $rate = 7;
 
     // The method calcArea calculates the area of circles
-    public function calculateRetun()
+    public function calculateReturn()
     {
 //        echo"snehal";
 //        exit;
@@ -56,11 +58,11 @@ class Stock extends Investment
         ];
 
     // The method calcArea calculates the area of circles
-    public function calculateRetun()
+    public function calculateReturn()
     {
-        $unit = $this->amount / self::$prevoursStockPrice['stock'];
-        $totalprofit = $unit * self::$currentStockPrice['stock'];
-        return $this->amount - $totalprofit;
+        $unit = $this->amount / self::$prevoursStockPrice[$this->stock];
+        $sellAmount = $unit * self::$currentStockPrice[$this->stock];
+        return $sellAmount - $this->amount;
     }
 }
 
@@ -68,10 +70,10 @@ class Stock extends Investment
 if (isset($_POST['invert']) && !empty($_POST['invert'])) {
     if ($_POST['invert'] == 'fd') {
         $invest = new Fd($_POST['amount']);
-    } else if ($_POST['invert'] == 'stock') {
-        $invest = new Stock($_POST['instock']);
+    } elseif ($_POST['invert'] == 'stock') {
+        $invest = new Stock($_POST['amount'], $_POST['instock']);
     }
-    $total = $invest->calculateRetun();
+    $total = $invest->calculateReturn();
     echo $total;
     exit;
 }

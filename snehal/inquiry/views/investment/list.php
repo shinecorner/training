@@ -23,7 +23,7 @@
                 } else if ($('#invert').val() == 'stock') {
                     var invert = {
                         amount: $("#amount").val(),
-                        instock: $("#instock").val(),
+                        instock: $("#stock").val(),
                         invert: $("#invert").val()
                             // invert: stock
                         };
@@ -56,7 +56,7 @@
                 </div>
                 <div class="form-group" style="display: none" id="instock">
                     <label for="instock">Select your Invetment Stock Option</label>
-                    <select class="custom-select custom-select-lg mb-3" name="instock" id="instock">
+                    <select class="custom-select custom-select-lg mb-3" name="stock" id="stock">
                         <option value="">Select Your Invetment Stock Option</option>
                         <option value="tatamotores">Tata Motores</option>
                         <option value="tcs">Tcs</option>
