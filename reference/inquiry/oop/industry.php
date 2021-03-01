@@ -112,10 +112,13 @@ class AssemblingQuotation extends Quotation{
     }
 }
 
-// $hareshQuotation = new Quotation(20,'pvc');
+$hareshQuotation = new Quotation(20,'pvc');
+//print_r($hareshQuotation);
+
 // echo $hareshQuotation->getPrice();
 
-// $rameshQuotation = new Quotation(30, 'backalight');
+$rameshQuotation = new Quotation(30, 'backalight');
+print_r([$hareshQuotation, $rameshQuotation]);
 // echo $rameshQuotation->getPrice();
 // // echo $rameshQuotation->detectOvenTime();
 

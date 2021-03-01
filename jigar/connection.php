@@ -5,7 +5,7 @@
 // $count = 0;
 
 
-$con = new mysqli("localhost","root","","develop_jigar");
+$con = new mysqli("localhost","shine","shine","develop_jigar");
 
 // Check connection
 if ($con -> connect_errno) {
