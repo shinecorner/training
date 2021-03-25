@@ -1,6 +1,6 @@
 <?php
 
-// echo "Hello Mayur";
+echo "Hello Mayur";
 
 // $message = "Hello Mayur";
 // echo $message;
